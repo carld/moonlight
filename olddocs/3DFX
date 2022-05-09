@@ -1,0 +1,44 @@
+From - Wed Apr  8 22:59:48 1998
+Date: Sun, 29 Mar 1998 18:54:04 +0000
+From: "Jens Ch. Restemeier" <jchrr@post.uni-bielefeld.de>
+To: rehel@worldnet.fr
+Subject: Moonlight tested with 3dfx
+
+Hi!
+
+>From your FAQ
+> ---------------------------------------------------------------------------- 
+>  Does Moonlight support 3Dfx for rendering? 
+>  ---------------------------------------------------------------------------- 
+>
+>    Voodoo chipset does not support windowed rendering yet. Mesa has 
+>    an hack to do windowed rendering using 3Dfx hardware. 
+>    The driver must support: rendering in multiple window with a single 
+>    GL context, GL_BACK and GL_FRONT rendering, XPixmap/Bitmap rendering. 
+>    I have no idea if any user have already run Moonlight with a 3Dfx. 
+>    To be followed! 
+
+I've got a 3dfx, currently, and I checked Moonlight and the GLTT demos
+with 3dfx. I used the "windowed" rendering, which uses the 3dfx for
+rendering and copies the result into an X-Window. I'm using Mesa 2.6
+with Linux.
+
+GLTT demos:
+demo: Crashes after the bitmapped font demos, alpha-blending demo didn't
+work
+logo: Works fine
+
+Moonlight:
+"windowed" mode: crahes after the introduction screen, paints the empty
+wire-frame view, but no menus or dialogs. upper area of the intro-screen
+is garbled.
+"fullscreen" mode: crahes after intro-screen.
+
+I think, that these are problems with the 3dfx. It's limited to a
+640x480 screen, and it works independant from the normal gfx-card.
+(i.e.: You can connect one monitor to your normal card, and another to
+the 3dfx.)
+Mabye it's interesting to check a new VooDoo2, with more memory.
+
+                        Jens Ch. Restemeier
+

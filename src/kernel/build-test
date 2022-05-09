@@ -1,0 +1,9 @@
+#!/bin/sh -x
+
+set -e
+
+make
+
+gcc -g -I.. -o test-it test-it.C \
+    -L../../lib/i686-pc-linux-gnu/dev/.libs/ \
+    -lmoon_kernel -lmoon_tools -lm -lpthread -lz -ldl

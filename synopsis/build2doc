@@ -1,0 +1,7 @@
+#!/bin/sh
+#purge docs directory
+rm -rf Manual
+
+# build the actual docs
+synopsis -f HTML -Wf,-Cjava -o Manual moonlight.syn
+cp style/style.css Manual/style.css

@@ -1,0 +1,102 @@
+This is the core kernel of Moonlight.
+
+There is a tree of named nodes (MLNode).
+Each node can have named properties (MLProperty).
+
+Example:
+
+    Node-1
+      . Property-4
+      - Node-2
+         . Property-1
+         . Property-2
+      - Node-3
+         . Property-3
+      - Node-4
+
+Each node is typed (MLNodeType::Type).
+Each property is typed (MLPropertyType::Type).
+More node types and property types can be created on the fly.
+
+-----------------------------------------------------------------------------
+
+A basic node type is MLNodeType::APP_ROOT (MLAppRoot). These nodes
+are root node for an instance of a specific application. This can
+be a 3D scene associated with a 3D scene module.
+AppRoot's keep all that is need to run an application with its data,
+without propagating this to its father.
+These information are local to the AppRoot:
+  + the node types (MLNodeType*)
+  + plug-ins (MLNode*)
+  + resources (data from the .mlrc file) (MLNode*)
+  + a procedure manager
+  + a log object (just printing messages on stdout by default)
+
+Node types are hierarchical: this means that a node type can inherit
+another node type.
+By default, any new node type inherits the MLNodeType::DEFAULT type.
+Moreover a node type keeps a list of procedures that can be run of it.
+(in the MLNodeType::NodeType::procedures node)
+
+At startup, MLKernel creates the root node. It creates the hash tables
+needed to associate an unique integer ID to each node and property.
+
+New AppRoot's will be plugged in to this root node.
+
+-----------------------------------------------------------------------------
+Procedures
+
+A procedure is a class inherited from MLProcedure that implements
+MLNode* MLProcedure::run(MLProcArgs* args). Its arguments are kept in
+a MLProcArgs class. This class is a node whose properties are the
+arguments.
+The MLProcArgs class is created by a MLProcProfile class. This class
+(a MLNodeType::PROC_PROFILE node) defines the declaration of a procedure:
+a list of arguments names and types.
+
+A procedure must be run on a particular node (by default it is the AppRoot
+node).
+
+For creating a new procedure:
+  + implement it into a MLProcedure inherited class. The constructor
+    must specify the AppRoot of the procedure and the node type associated
+    to this procedure. The type is MLNodeType::APP_ROOT by default.
+  + set its name as the procedure node name.
+  + define its profile in a MLProcProfile class: a list of
+    (name,property_type). Take care of the order!
+    Example: this function call adds a integer parameter named "index".
+      profile->addParam( "index", int(MLPropertyType::INTEGER) );
+    The profile is a child node of the procedure node named "profile".
+    You can get it by MLProcedure::getProfile().
+
+For calling the procedure:
+  + create an MLProcArgs class, and set the procedure arguments as
+    named properties of this node.
+    This job can easily be done by calling the static funtion
+    MLProcArgs::create(MLProcProfile*,...).
+    Example: this creates arguments for calling a previous defined
+    procedure. The "index" parameter is set to 45:
+      MLProcArgs* args= MLProcArgs::create( procedure, 45 );
+  + Call it:
+      procedure->run(procargs);
+This previous job can be done in a single call from the AppRoot:
+
+  approot->postProc( "my_procedure", 45 );
+or:
+  approot->postProc( my_node, "my_procedure", 45 );
+
+If you want your procedure to be executed immediatly and get its
+returned data, just consider it as a function:
+
+  MLNode* returned_node= approot->runFunction( my_node, "my_procedure", 45);
+
+Careful: calling 'approot->runFunction(my_node,"my_procedure")' (without
+any argument) _will_ crash at run-time.
+
+-----------------------------------------------------------------------------
+
+MLKernelModule's are plug-ins that create new MLAppRoot.
+
+MLPlug-in's are created from a MLAppRoot.
+
+-----------------------------------------------------------------------------

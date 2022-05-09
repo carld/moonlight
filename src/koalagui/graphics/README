@@ -1,0 +1,18 @@
+This is the graphics part of Moonlight Creator.
+
+In this directory reside the main portable classes for creating windows,
+handling events, etc.
+
+Subdirectories are:
+
+  fonts/           The standard bitmap fonts.
+
+  X11/             The X11 wrapper.
+
+  Win/             The Windows wrapper.
+
+If you want to port Moonlight interface to another windowing system
+(BeOS, Rhapsody, OS/2, Amiga, ...) you have to create a subdirectory
+here, and write a correct wrapper to your windowing system.
+
+/SR, March 31 1998 (the mozilla day)

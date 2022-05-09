@@ -1,0 +1,5 @@
+#!/bin/sh
+LD_LIBRARY_PATH=CONF_PREFIX/lib/moonlight
+export LD_LIBRARY_PATH
+CONF_PREFIX/bin/moonlight-bin
+

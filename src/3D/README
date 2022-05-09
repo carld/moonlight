@@ -1,0 +1,22 @@
+This is Moonlight 3D root. You can see Moonlight-3D as a plug-in
+of MLKernel.
+
+        scene/      The 3D kernel itself
+
+        kmodel/     The GUI based on the Koala Interface
+
+Here's how it works: the GUI (it can be any GUI, the default implemented
+one is the Koala one) is created by the main executable.
+This GUI resides into libmoon_koagagui.
+
+Then this GUI creates new MLAppRoot's by loading kmodel libs as
+MLKernelModule's. Each kmodel creates a MLScene which is a MLAppRoot, and
+returns it.
+
+A command-line tool could only start a scene module and work with it
+without starting any interface.
+
+That's all!
+
+April 1998,
+/kepler

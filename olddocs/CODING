@@ -1,0 +1,153 @@
+Some Coding style rules for Moonlight
+-------------------------------------
+
+General
+-------
+
+ I don't like tabs. Definitely.
+ Use "  " (two spaces) instead.
+ 80 characters lines as far as you can.
+
+ You can get my own editor if it could help you. It is available
+ at http://home.worldnet.fr/~rehel/Arf++/index.html
+
+Variable names
+--------------
+
+  Shorter and simplier as you can. The code is to be readable, simple,
+  easy to understand.
+
+  Indices: i, j, k, index, i1, i2, ...
+  Reals: d, f
+  Pointer to a Scene class: scene
+  Pointer to a ModelModule class: model, modelModule
+  Pointer to a Vector class: v, vector, v1, v2, ...
+  Pointer to an OtherDummy class: od, otherDummy
+
+Memory
+------
+
+  Before allocating a pointer, initialize it as soon as you can:
+
+    p= 0;
+
+  So the code will surely crash'n burn if a non-allocated pointer
+  is used.
+
+  Each time you free up a pointer, make it 0 (even in a destructor):
+
+    delete p;
+    p= 0;
+
+  This prevents any code from using it again.
+
+  Don't use NULL with C++. Prefer 0 instead.
+
+Functions
+---------
+
+  int fct( int i, int j )
+  {
+    // ...
+  }
+
+Loops
+-----
+
+  for( int i= 1; i <= n; ++i )
+    {
+    // ...
+    }
+
+  while( cond )
+    {
+    // ...
+    }
+
+  for(;;)
+    {
+    // ...
+    if( ! cond )
+      break;
+    // ...
+    }
+
+  do{
+    // ...
+    }
+  while( cond );
+
+Headers
+-------
+
+<GNU GPL license header> from gnu-header.h
+/*
+  FILENAME.h
+
+  signature
+  date
+*/
+
+#ifndef __FILENAME_h
+#define __FILENAME_h
+
+#include "some_file"
+
+class OtherDummy;
+
+/////////////////////////////////////////////////////////////////////////////
+
+class Dummy
+{
+protected:
+  ...
+public:
+  Dummy()
+    {
+    ...
+    }
+
+  virtual ~Dummy()
+    {
+    ...
+    }
+
+  // one comment
+  void fct1() const;
+
+  void fct2( const OtherDummy& od );
+};
+
+/////////////////////////////////////////////////////////////////////////////
+
+#endif // ifndef __FILENAME_h
+
+Core file
+---------
+
+<GNU GPL license header> from gnu-header.h
+/*
+  FILENAME.C
+
+  signature
+  date
+*/
+
+#include "FILENAME.h"
+
+/////////////////////////////////////////////////////////////////////////////
+
+// one comment
+void Dummy::fct1() const
+{
+  ...
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void Dummy::fct2( const OtherDummy& od )
+{
+  ...
+}
+
+/////////////////////////////////////////////////////////////////////////////

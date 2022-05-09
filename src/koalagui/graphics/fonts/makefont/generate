@@ -1,0 +1,50 @@
+#!/bin/sh
+
+## This file is part of Moonlight Creator
+##   Copyright (C) 1998  Stephane Rehel
+##
+## This program is free software; you can redistribute it and/or
+## modify it under the terms of the GNU Library General Public
+## License as published by the Free Software Foundation; either
+## version 2 of the License, or (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+## Library General Public License for more details.
+##
+## You should have received a copy of the GNU Library General Public
+## License along with this library; if not, write to the Free
+## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+CMD="./makefont screen16 >../NormalFont-1024.h"
+echo $CMD
+eval $CMD
+
+CMD="./makefont screen12 >../SmallFont-1024.h"
+echo $CMD
+eval $CMD
+
+CMD="./makefont screen18 >../BigFont-1024.h"
+echo $CMD
+eval $CMD
+
+WIDGET="-adobe-helvetica-medium-r-normal--12-120-75-75-p-*-iso8859-1"
+CMD="./makefont $WIDGET >../WidgetFont-1024.h"
+echo $CMD
+eval $CMD
+
+CMD="./makefont screen14 >../FixedWidgetFont-1024.h"
+echo $CMD
+eval $CMD
+
+WIDGETBOLD="-adobe-helvetica-bold-r-normal--12-120-75-75-p-*-iso8859-1"
+CMD="./makefont $WIDGETBOLD >../WidgetBoldFont-1024.h"
+echo $CMD
+eval $CMD
+
+WIDGETBIG="-adobe-helvetica-medium-r-normal--20-140-100-100-p-*-iso8859-1"
+CMD="./makefont $WIDGETBIG >../WidgetBigFont-1024.h"
+echo $CMD
+eval $CMD
+

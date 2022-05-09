@@ -1,0 +1,53 @@
+Moonlight Raw Format description
+--------------------------------
+
+Moonlight is able to save a scene in a raw format (including lighting)
+This format is to be easyly readable.
+The format includes:
+  + the number of objects and pools
+  + each object
+  + the number of vertices and polygons
+  + the vertices, the normals, and the lighting per vertex for each pool
+  + the polygons as a list of indices of vertices
+
+
+<n_objects>                                # number of objects
+<n_pools>                                  # number of pools
+<object_1_name>                            # first object descrition
+<n_vertices>                               #   vertices for object #1
+<n_polygons>                               #   polygons for object #1
+<vertex_1_x> <vertex_1_y> <vertex_1_z>     #   vertex #1
+<normal_1_x> <normal_1_y> <normal_1_z>     #   normal #1
+<v_illum_1_r> <v_illum_1_g> <v_illum_1_b>  #     lighting of vertex #1 per
+<v_illum_2_r> <v_illum_2_g> <v_illum_2_b>  #      pool
+...                                        #
+<v_illum_P_r> <v_illum_P_g> <v_illum_P_b>  #
+<vertex_2_x> <vertex_2_y> <vertex_2_z>     #   vertex #2
+<normal_2_x> <normal_2_y> <normal_2_z>     #   normal #2
+<v_illum_1_r> <v_illum_1_g> <v_illum_1_b>  #     lighting of vertex #2 per
+...                                        #     pool
+<v_illum_P_r> <v_illum_P_g> <v_illum_P_b>  #
+...                                        #
+<vertex_N_x> <vertex_N_y> <vertex_N_z>     #   vertex #N
+<normal_N_x> <normal_N_y> <normal_N_z>     #   normal #1
+<v_illum_1_r> <v_illum_1_g> <v_illum_1_b>  #     lighting of vertex #N per
+...                                        #     pool
+<v_illum_P_r> <v_illum_P_g> <v_illum_P_b>  #
+<n_vertices_for_polygon_1>                 #   vertices for polygon #1
+<vertex_1_index>                           #     index of vertex #1 (>=1)
+...                                        #
+<vertex_Q_index>                           #     index of vertex #Q(1)
+...                                        #
+<n_vertices_for_polygon_R>                 #   vertices for polygon #R
+<vertex_1_index>                           #     index of vertex #1 (>=1)
+...                                        #
+<vertex_Q_index>                           #     index of vertex #Q(R)
+<object_1_name>                            # object #2 description
+<n_vertices>                               #   vertices for object #2
+<n_polygons>                               #   polygons for object #2
+...                                        # ...
+
+
+----------------
+December 14 1997
+/Stephane Rehel.

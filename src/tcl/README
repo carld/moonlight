@@ -1,0 +1,80 @@
+This is the Tcl Plug-in of Moonlight.
+
+Nodes and properties are commands: node124, prop453, etc.
+
+The base root command is "ml_root". It is the MLAppRoot.
+
+----------------------------------------------------------------------------
+
+Nodes commands:
+
+  exists     Returns 1 if the node exists, 0 otherwise
+
+  name       Returns the name of this node
+
+  nodeof name  Return 1 if the node matches type <name>, 0 otherwise
+
+  nChildren  Returns the number of children of this node
+
+  children   Returns the list of the children of this node
+
+  findChild name
+             Returns the child matching the specified name, "" if
+             not found
+
+  newChild name
+             Creates a new child for this node. The new child has
+             the "Default" type.
+             Return the node command, or "" if a child with the specified
+             name already exists
+
+
+  nProperties
+             Returns the number of properties of this node
+
+  properties Returns the list of the properties of this node
+
+  findProperty name
+             Returns the property matching the specified name, or "" if
+             not found
+
+  newProperty name
+             Creates a new property for this node. The new property has
+             no type at all.
+             Return the property command, or "" if a property with the
+             specified name already exists
+
+
+----------------------------------------------------------------------------
+
+Properties commands:
+
+  exists     Returns 1 if the property exists, 0 otherwise
+
+  name       Returns the name of this property
+
+  node       Returns the node that owns this property, "" if this property
+             is not attached to any node
+
+  type       Returns the type of this property.
+
+  toString   Returns a string representation of this property.
+
+  getBoolean Returns: true|false
+  getInteger Returns: value
+  getReal    Returns: value
+  getVector  Returns: x y z
+  getColor   Returns: r g b
+  getString  Returns: string
+  getNodeRef Returns: node command
+  getArrayLength
+             Returns the length of the array. The property must be a,
+             array.
+
+  setBoolean boolean
+  setInteger integer
+  setReal    real
+  setVector  [x y z]
+  setColor   [r g b]
+
+----------------------------------------------------------------------------

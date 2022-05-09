@@ -1,0 +1,48 @@
+0.5.5:
+2002-10-14
+* fixed GUI (pm)
+* changed fonts (pm)
+* removed xdrwin due to license (pm)
+2002-09-27
+* changes to image/ (gm)
+2002-08-18
+* new build system (pm)
+2002-04-28
+* more documentation (pm, gm)
+2002-04-25
+* removed photo, use GIMP instead (gm)
+2002-04-18
+* begun commenting the code (gm)
+2002-04-16
+* Synopsis scripts for code documentation (pm)
+* doxygen config for code documentation (gm)
+2002-04-13
+* disable crash'n'burn error handler (gm)
+* removed DArray hack from renderer (gm)
+
+0.5.4:
+2002-03-30
+* added copyright where it seemed appropriate (pm)
+* VEdit Control now reacts immediately (pm)
+* some windows specific files deleted (pm)
+* two scripts to build a Manual of the classes with synopis (pm)
+* fix to the buildsystem to handle more X11-systems (gm)
+2002-03-29
+* more extensive checks on creating a visual (pm)
+2002-02-17
+* fixed autoconf-stuff so it works with autoconf2.50, too (pm)
+  thanks to AxeZ for pointing this one out
+2001-01-28
+* fixed bug that menu needs a mousemove-event to draw the popups (pm)
+* fixed introduced bug in Makefile (pm)
+2001-01-22
+* kbuilder is now installed too (pm)
+* build-number changed, reflects days since last release (1321 *sic*) (pm)
+* compiles with gcc3 now (pm)
+* compile isn't unnecessary verbose anymore (pm)
+2001-01-21
+* fixes to make it compile again (pm)
+
+0.5.3:
+2001-01-21
+* taken from sourcebase, see olddocs/ChangeLog.old for more information (pm)

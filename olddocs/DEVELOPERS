@@ -1,0 +1,46 @@
+DEVELOPERS information for Moonlight Creator
+--------------------------------------------
+
+Use "make" for building an optimized-version.
+
+Use "make MOONLIGHT_DEV=yes" for building a developer's version. (this
+binary is not running full-screen and you can exit it by pressing
+<ctrl><alt><key_pad_insert>)
+
+You can also use an environment variable:
+
+  export MOONLIGHT_DEV=yes
+  make
+
+and when compiling an optimized version:
+
+  make MOONLIGHT_DEV=""
+
+If you really want to add a "-g" flag, use "make debug=yes". You can
+also set the MOONLIGHT_DEBUG environment variable to "yes".
+
+"make clean" removes obj/$target_os/{dev|opt}/*.o
+"make realclean" removes obj/
+"make distclean" removes obj/ and Makeconfig, config.cache, etc.
+
+Edit the src/modules file for enabling modules.
+
+If you want to set up a new module, read the "tmpl" module sources.
+Use the "src/tmpl/replace_tmpl_names" for creating a new source
+tree for the tmpl tree.
+
+The objects files, the libraries and the final binaries are recorded
+in $target_os/$dev_opt/ directories.
+
+  $target_os is your target OS.
+  $dev_opt is "dev" for a developer's version,
+              "opt" for a final optimized version.
+
+If you want to link from a directory, use the shortcut "make _ml"
+
+Dialogs are created with the "KBuilder" module. They read/write a .dlg
+file and generate a .h and a .C file. See source code...
+If you want to start directly with the kbuilder module, make a link:
+  ln -s moonlight kbuilder
+and run "kbuilder".
+

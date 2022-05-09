@@ -1,0 +1,386 @@
+DialogPosition 1
+200 50
+DialogSize 1
+254 104
+nWidgets 1
+6
+DialogTitle 1
+Quit
+DialogFrame 1
+1
+DialogKillIcon 1
+0
+Name 1
+QuitInterfaceDlg
+C_filename 1
+QuitInterfaceDlg.C
+h_filename 1
+QuitInterfaceDlg.h
+has_C_filename 1
+0
+has_h_filename 1
+0
+write_C_file 1
+1
+ValidateCancel 1
+1
+ValidateID 1
+2
+CancelID 1
+3
+DefaultGranularity 1
+4
+Granularity 1
+4
+Margins 4
+8
+8
+0
+0
+CardsRectangle 2
+-44 -112
+197 56
+EndHeader 0
+
+Type 1
+1
+Position 1
+71 8
+Size 1
+174 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+Really quit Moonlight Creator?
+ID 1
+1
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_1
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+27
+Position 1
+8 9
+Size 1
+56 46
+MinSize 1
+56 46
+MaxSize 1
+56 46
+Sizeable 1
+0 0
+Message 1
+
+ID 1
+4
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_4
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+afraid.ppm
+EndWidget 0
+
+Type 1
+22
+Position 1
+0 62
+Size 1
+254 5
+MinSize 1
+10 5
+MaxSize 1
+0 5
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+6
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_6
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+0
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+71 31
+Size 1
+85 24
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Cancel
+ID 1
+3
+LinkID 1
+0
+CardID 1
+0
+Name 1
+cancel
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+163 31
+Size 1
+85 24
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&OK
+ID 1
+2
+LinkID 1
+0
+CardID 1
+0
+Name 1
+ok
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+8 72
+Size 1
+240 24
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+Only &iconify it (Alt-F9)
+ID 1
+5
+LinkID 1
+0
+CardID 1
+0
+Name 1
+iconify
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+nGroups 0

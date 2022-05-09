@@ -1,0 +1,2 @@
+SUBDIRS=scene kmodel
+SRC=

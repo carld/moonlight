@@ -1,0 +1,7 @@
+[Moonlight]
+Fullscreen=1
+Gamma=1
+
+[Moonlight 3D]
+Databases = CONF_PREFIX/share/moonlight/database
+TTFontPath = CONF_PREFIX/share/moonlight/database/TT_FONTS

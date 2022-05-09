@@ -1,0 +1,860 @@
+DialogPosition 1
+200 50
+DialogSize 1
+200 191
+nWidgets 1
+16
+DialogTitle 1
+Camera
+DialogFrame 1
+1
+DialogKillIcon 1
+1
+Name 1
+CameraDlg
+C_filename 1
+CameraDlg.C
+h_filename 1
+CameraDlg.h
+has_C_filename 1
+0
+has_h_filename 1
+0
+write_C_file 1
+1
+ValidateCancel 1
+1
+ValidateID 1
+1
+CancelID 1
+0
+DefaultGranularity 1
+2
+Granularity 1
+1
+Margins 4
+2
+4
+0
+0
+CardsRectangle 2
+9 4
+100 80
+EndHeader 0
+
+Type 1
+1
+Position 1
+2 21
+Size 1
+133 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Scale X/Y/Z
+ID 1
+2
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_2
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+1
+Position 1
+2 67
+Size 1
+93 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Rotate X/Y/Z
+ID 1
+6
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_6
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+1
+Position 1
+2 113
+Size 1
+121 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Translate X/Y/Z
+ID 1
+10
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_10
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+22
+Position 1
+0 63
+Size 1
+200 5
+MinSize 1
+10 5
+MaxSize 1
+0 5
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+11
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_11
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+0
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+22
+Position 1
+0 109
+Size 1
+200 5
+MinSize 1
+10 5
+MaxSize 1
+0 5
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+12
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_12
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+0
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+22
+Position 1
+0 156
+Size 1
+200 5
+MinSize 1
+10 5
+MaxSize 1
+0 5
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+18
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_18
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+0
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+1
+Position 1
+6 2
+Size 1
+47 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+Object:
+ID 1
+13
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_13
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+1
+Position 1
+52 2
+Size 1
+143 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+Label
+ID 1
+14
+LinkID 1
+0
+CardID 1
+0
+Name 1
+object
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+22
+Position 1
+0 19
+Size 1
+200 5
+MinSize 1
+10 5
+MaxSize 1
+0 5
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+19
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_19
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+0
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+12
+Position 1
+1 38
+Size 1
+65 21
+MinSize 1
+20 21
+MaxSize 1
+0 21
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+20
+LinkID 1
+2
+CardID 1
+0
+Name 1
+scale_x
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+-1e+30
+MaxValue 1
+1e+30
+NDigits 1
+6
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+12
+Position 1
+133 38
+Size 1
+65 21
+MinSize 1
+20 21
+MaxSize 1
+0 21
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+22
+LinkID 1
+0
+CardID 1
+0
+Name 1
+scale_z
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+-1e+30
+MaxValue 1
+1e+30
+NDigits 1
+6
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+12
+Position 1
+1 84
+Size 1
+65 21
+MinSize 1
+20 21
+MaxSize 1
+0 21
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+3
+LinkID 1
+6
+CardID 1
+0
+Name 1
+rotate_x
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+-1e+30
+MaxValue 1
+1e+30
+NDigits 1
+6
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+12
+Position 1
+133 84
+Size 1
+65 21
+MinSize 1
+20 21
+MaxSize 1
+0 21
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+4
+LinkID 1
+0
+CardID 1
+0
+Name 1
+rotate_z
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+-1e+30
+MaxValue 1
+1e+30
+NDigits 1
+6
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+12
+Position 1
+1 130
+Size 1
+65 21
+MinSize 1
+20 21
+MaxSize 1
+0 21
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+7
+LinkID 1
+10
+CardID 1
+0
+Name 1
+translate_x
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+-1e+30
+MaxValue 1
+1e+30
+NDigits 1
+6
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+12
+Position 1
+67 130
+Size 1
+65 21
+MinSize 1
+20 21
+MaxSize 1
+0 21
+Sizeable 1
+1 0
+Message 1
+
+ID 1
+9
+LinkID 1
+0
+CardID 1
+0
+Name 1
+translate_y
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+-1e+30
+MaxValue 1
+1e+30
+NDigits 1
+6
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+135 163
+Size 1
+61 24
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Apply
+ID 1
+1
+LinkID 1
+0
+CardID 1
+0
+Name 1
+apply
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+1
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+nGroups 0

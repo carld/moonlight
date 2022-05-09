@@ -1,0 +1,76 @@
+#!/bin/sh
+BASEDIR=`cd ..; pwd`
+SRC=$BASEDIR/src
+SYNOPSIS=$BASEDIR/synopsis/files
+INCLUDES="-I../../../../.. -I$SRC/koalagui -I../../../.. -I../../.. -I../.. -I.. -I/usr/lib/gcc-lib/i386-linux/2.95.4/include/ -I/usr/include/g++-3/"
+
+PATHS="kernel \
+      tools \
+      tools/3D \
+      tools/file \
+      tools/thread \
+      tools/xdr \
+      tools/zlib \
+      image \
+      image/bmp \
+      image/gif \
+      image/jpg \
+      image/pnm \
+      image/rgb \
+      image/tga \
+      image/tif \
+      koalagui \
+      koalagui/graphics \
+      koalagui/graphics/X11 \
+      koalagui/graphics/fonts \
+      koalagui/interface \
+      koalagui/interface/dialogs \
+      koalagui/interface/startup \
+      koalagui/koala \
+      koalagui/kw \
+      GL \
+      3D \
+      3D/kmodel \
+      3D/kmodel/commands \
+      3D/kmodel/dialogs \
+      3D/kmodel/engines \
+      3D/kmodel/engines/draw \
+      3D/kmodel/file \
+      3D/kmodel/functions \
+      3D/kmodel/gdialogs \
+      3D/kmodel/gdialogs/file \
+      3D/kmodel/modes \
+      3D/kmodel/render \
+      3D/scene \
+      3D/scene/convert/export \
+      3D/scene/convert/formats \
+      3D/scene/convert/import \
+      3D/scene/convert/import/asc \
+      3D/scene/convert/import/dxf \
+      3D/scene/convert/import/hrc \
+      3D/scene/convert/import/md2 \
+      3D/scene/convert/import/off \
+      3D/scene/file \
+      3D/scene/formal \
+      3D/scene/lighting \
+      3D/scene/material \
+      3D/scene/nurbs \
+      3D/scene/renderer \
+      "
+
+#build .syn files
+for j in $PATHS; do
+  mkdir -p $SYNOPSIS/$j
+  cd $SRC/$j
+  for i in *.h; do 
+    if [ ! $SRC/$j/$i -ot $SYNOPSIS/$j/$i.syn ] ; then
+      echo $j/$i
+      synopsis -p C++ -Wp,-m $INCLUDES -o $SYNOPSIS/$j/$i.syn -Wp,-b,$SRC $SRC/$j/$i || true
+      CHANGED=1
+    fi
+  done
+done
+
+cd $BASEDIR/synopsis
+
+[ x$CHANGED == x1 ] && synopsis -c config.py -Wc,linker=C++ -o moonlight.syn `find . -name '*.syn'`

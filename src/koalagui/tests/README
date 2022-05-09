@@ -1,0 +1,15 @@
+In this directory you'll find some test programs:
+
+graphics/
+
+  Test of the base graphics library.
+
+koala/
+
+  Test of the graphics+koala widgets library.
+
+threads/
+
+  Test of the multi-threading library.
+
+They are usefull for porting Moonlight to another system.

@@ -1,0 +1,95 @@
+#!/bin/sh
+. `dirname $0`/configure.funcs
+
+header "Moonlight 3D"
+
+patchfile(){
+# patchfile inputfile outputfile
+
+if [ "x$HELPMODE" = xyes ]; then return; fi
+
+sed "s,CONF_SRCDIR,$SRCDIR,g"  "$1"   | \
+sed "s,CONF_PREFIX,$PREFIX,g"         | \
+sed "s,CONF_VERSIONMAJ,$VERSIONMAJ,g" | \
+sed "s,CONF_VERSIONMIN,$VERSIONMIN,g" | \
+sed "s,CONF_VERSIONPAT,$VERSIONPAT,g" | \
+sed "s,CONF_VERSIONBUI,$VERSIONBUI,g" | \
+sed "s,CONF_VERSION,$VERSION,g"       | \
+sed "s,CONF_DATE,$DATE,g"             | \
+sed "s,CONF_USERNAME,$USERNAME,g"     | \
+sed "s,CONF_HOSTNAME,$HOSTNAME,g"     | \
+sed "s,CONF_ARCH,$ARCH,g"             | \
+sed "s,CONF_SYSTEM,$SYSTEM,g"         | \
+sed "s,CONF_CPUVEND,$CPUVEND,g"       | \
+sed "s,CONF_CXXVERSION,$CXXVERSION,g" | \
+sed "s,CONF_CXX,$CXX,g"               | \
+sed "s,CONF_CC,$CC,g"                 | \
+sed "s,CONF_SOCKLEN,$CONF_SOCKLEN,g"  | \
+sed "s,CONF_TIFF_LIB,$CONF_TIFF_LIB,g"| \
+sed "s,CONF_TIFF_INC,$CONF_TIFF_INC,g"| \
+sed "s,CONF_JPEG_LIB,$CONF_JPEG_LIB,g"| \
+sed "s,CONF_JPEG_INC,$CONF_JPEG_INC,g"| \
+sed "s,CONF_TTF_LIB,$CONF_TTF_LIB,g"  | \
+sed "s,CONF_TTF_INC,$CONF_TTF_INC,g"  | \
+sed "s,CONF_GLTT_LIB,$CONF_GLTT_LIB,g"| \
+sed "s,CONF_GLTT_INC,$CONF_GLTT_INC,g"| \
+sed "s,CONF_X11_LIB,$CONF_X11_LIB,g"  | \
+sed "s,CONF_X11_INC,$CONF_X11_INC,g"  | \
+sed "s,CONF_COMPMODE,$CONF_COMPMODE,g"| \
+sed "s,CONF_DATE,$DATE,g"             > "$2"
+}
+
+checkpath prefix /usr/local
+PREFIX=$RETURN
+
+checkoption with-compmode debug "optimize, profile"
+if [ "x$RETURN" = xdebug    ];then CONF_COMPMODE="-g"; fi
+if [ "x$RETURN" = xoptimize ];then CONF_COMPMODE="-O2"; fi
+if [ "x$RETURN" = xprofile  ];then CONF_COMPMODE="-pg -g"; fi
+
+checkapp "g++ g++-3.2 g++-2.95 c++" #CC doesn't work yet (MipsPRO)
+CXX=$RETURN
+CC=$RETURN
+
+checktype socklen_t "unistd.h sys/socket.h" "int"
+CONF_SOCKLEN=$RETURN
+
+checklib tiff tiffio.h 'TIFFIsTiled(0)'
+CONF_TIFF_LIB=$LIBPATH
+CONF_TIFF_INC=$INCPATH
+
+#doesn't quite work
+#
+#checklib jpeg jpeglib.h 'jpeg_abort_compress(0)'
+#CONF_JPEG_LIB=$LIBPATH
+#CONF_JPEG_INC=$INCPATH
+
+checklib ttf freetype.h 'TT_MulDiv(0,0,0)' "" "/usr/include/freetype"
+CONF_TTF_LIB=$LIBPATH
+CONF_TTF_INC=$INCPATH
+
+checklib gltt FTEngine.h 'FTEngine a' "" "/usr/include/gltt" "-lGL -lttf -lGLU"
+CONF_GLTT_LIB=$LIBPATH
+CONF_GLTT_INC=$INCPATH
+
+checklib X11 Xlib.h 'XBitmapUnit(0)' "/usr/X11R6/lib" "/usr/include/X11"
+CONF_X11_LIB=$LIBPATH
+CONF_X11_INC=$INCPATH
+
+VERSIONMAJ=`$SRCDIR/get-version -M`
+VERSIONMIN=`$SRCDIR/get-version -m`
+VERSIONPAT=`$SRCDIR/get-version -p`
+VERSIONBUI=`$SRCDIR/get-version -b`
+VERSION=`$SRCDIR/get-version`
+DATE=`date`
+USERNAME=`whoami`
+HOSTNAME=`hostname`
+ARCH=`uname -m`
+SYSTEM=`uname -s`
+CPUVEND=`uname -p`
+CXXVERSION=`$CXX --version | head -n1`
+
+producefiles Makefile config.h moonlightrc moonlight.run.sh
+if [ "x$HELPMODE" != "xyes" ]; then 
+  mv $OBJDIR/moonlight.run.sh $OBJDIR/moonlight
+fi

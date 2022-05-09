@@ -1,0 +1,70 @@
+Linux
+-----
+
+The Linux binary distribution has been splitten into:
+
+  moonlight-0.5.0-app.tar.gz  : this is the application part (the
+                                executable and the libmoon_* libraries)
+
+  moonlight-0.5.0-libs.tar.gz : all the additional libraries required
+                                to run moonlight (jpeg, tiff, zlib,
+                                gltt, ttf, Mesa, stdc++)
+
+Untar from the root directory:
+
+  cd /
+  tar xfvz moonlight-0.5.0-app.tar.gz
+
+If you don't have all the required libraries already installed on your
+system:
+
+  tar xfvz moonlight-0.5.0-libs.tar.gz
+  export LD_LIBRARY_PATH=/usr/local/lib/moonlight:$LD_LIBRARY_PATH
+
+If you don't have enough privileges, untar it wherever you want, edit
+moonlightrc resource file, and run
+
+   moonlight -mlrc <moonlightrc_filename>
+
+or set MOONLIGHT_RC_FILE environment variable. (see RESOURCE_FILE doc)
+You also have to set LD_LIBRARY_PATH accordingly for loading shared
+libraries and plug-ins.
+
+Here are the shared libraries required to run Moonlight:
+
+$ ldd moonlight
+   libmoon_koalagui.so.0 => /usr/local/lib/moonlight/libmoon_koalagui.so.0 (0x400f6000)
+   libmoon_scene.so.0 => /usr/local/lib/moonlight/libmoon_scene.so.0 (0x40344000)
+   libmoon_image.so.0 => /usr/local/lib/moonlight/libmoon_image.so.0 (0x40000000)
+   libmoon_kernel.so.0 => /usr/local/lib/moonlight/libmoon_kernel.so.0 (0x40087000)
+   libmoon_tools.so.0 => /usr/local/lib/moonlight/libmoon_tools.so.0 (0x40441000)
+   libtiff.so.3 => /usr/local/lib/libtiff.so.3 (0x4001e000)
+   libjpeg.so.6 => /usr/local/lib/libjpeg.so.6 (0x40050000)
+   libMesaGL.so.3 => /usr/local/lib/libMesaGL.so.3 (0x401c8000)
+   libMesaGLU.so.3 => /usr/local/lib/libMesaGLU.so.3 (0x40293000)
+   libgltt.so.2 => /usr/local/lib/libgltt.so.2 (0x4041f000)
+   libttf.so.1 => /usr/local/lib/libttf.so.1 (0x4042d000)
+   libXext.so.6 => /usr/X11R6/lib/libXext.so.6 (0x402a9000)
+   libX11.so.6 => /usr/X11R6/lib/libX11.so.6 (0x402b3000)
+   libz.so.1 => /usr/local/lib/libz.so.1 (0x40489000)
+   libpthread.so.0 => /lib/libpthread.so.0 (0x40499000)
+   libdl.so.2 => /lib/libdl.so.2 (0x404a8000)
+   libstdc++.so.2.8 => /usr/lib/libstdc++.so.2.8 (0x4054d000)
+   libm.so.6 => /lib/libm.so.6 (0x4006e000)
+   libc.so.6 => /lib/libc.so.6 (0x404ac000)
+   /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x2aaaa000)
+
+libmoon_kmodel.so.0 is also required at startup.
+Please note that your system must have glibc installed.
+
+Windows
+-------
+
+Unzip in C:\ and run C:\USR\LOCAL\BIN\MOONLIGHT.EXE
+
+If you want to install it in another place, edit the MOONLIGHTRC resource
+file, and run
+
+   MOONLIGHT.EXE -mlrc <moonlightrc_filename>
+
+or set MOONLIGHT_RC_FILE environment variable. (see RESOURCE_FILE doc)

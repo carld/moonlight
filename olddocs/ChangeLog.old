@@ -1,0 +1,234 @@
+Moonlight Creator ChangeLog
+
+0.5.3   June 10 1998
+  - Added a glut previewer in docs/mlraw (from Daniel Thom
+    <psu12149@odin.cc.pdx.edu>)
+  - KoalaGui (Interface) is now an MLAppRoot. Koala Modules are just
+    nodes. ModelModule is a child node of MLScene (which is an AppRoot)
+  - Fixed some template bugs in src/tools
+  - Wrote the src/tools/ML*Log* files.
+  - Added an emacs-like command line for entering commands. Commands
+    and messages logging window. (press right button for it)
+  - The "oom" module is back, even if it is quite empty for now.
+  - Wrote some information about the kernel in src/kernel/README.
+  - Kernel procedures code has been reorganized.
+  - Fixed a serious bug in src/tools/MLHashTable.h (could cause an
+    "Virtual memory exceeded in `new'" crash)
+  - Fixed the --with-gl-prefix bug in configure (<thron@gmx.de>)
+  - MLCanvas and MLEngines inherit MLNode now.
+  - Removed src/3D/scene/MLVertex.h,MLSVertex.h,MLEdge.h,MLPolygon.h
+  - Enabled -g by default for the development release.
+
+0.5.2   May 24 1998
+  - Integrated back the 3D formats converter (DXF, etc).
+  - Dependency files: .depend for developpement build, .depend-opt for
+    an optimized build.
+
+0.5.1   May 21 1998
+  - Integrated back the (small) photo module.
+  - ML compiles fine with jpeg-v6b
+  - Added some pointers highlighting to the interface buttons
+  - Added the MLEvent::MOUSE_ENTER and MLEvent::MOUSE_LEAVE events
+  - Added Procedures Manager in kernel with undo/redo stuff
+  - Replaced "source" by "." in main/Makefile
+  - Fixes for windows platform. (unable to do dlopen() with Cygnus tools)
+  - Renamed ELEMENT to T in tools/MLDArray.h
+  - Included a test for old version of gcc (<2.8.1)
+  - Test for supported -mpentium in acinclude.m4
+  - Test for dlfcn.h header in configure.in
+  - Holidays:-)
+  - Use of GLTTBitmapFont instead of GLTTPixmapFont in
+    3D/kmodel/gdialogs/MLDSelectTTFont.C
+
+0.5.0   May 3 1998
+  - A first version of the Sunny Architecture is here. Note that Moonlight
+    doesn't use it yet! This is only the first step towards this new
+    architecture. The 3D kernel will use this new architecture step by step,
+    in future releases. (this is really a long work...)
+  - The whole compilation process has been revised. Moonlight executable
+    is now broken in shared libraries. Plug-ins and modules are
+    shared libraries. Source structure has been updated too.
+  - libtool is now used for compiling, linking and installing libraries and
+    plug-ins.
+  - Internal changes: OString becomes MLString, MLFileEntry should be
+    used instead of ListFiles, MLDArray (template) replaces DArray (define).
+    New classes: MLSocket*, MLHashTable, MLEnumeration, MLDynamicLibrary.
+    (BTW, MLDynamicLibrary should be updated for HP-UX targets).
+  - You need to install GLTT on your system now. GLTT is no more included
+    into Moonlight source distribution.
+  - About scripting languages: a Tcl plug-in is written. Not used for now.
+  - 3 freeware true type fonts are now included and installed.
+
+0.4.3   April 8 1998
+  This a minor release. I am working on the new architecture and the
+  code of next major release will be slightly different. But as far as
+  people send me new features for the current version, i maintain it.
+  - Removed tools/poptions.[Ch] (unused)
+  - Fixed some small bugs in the MD2 exporters.
+  - Added the RIB exporter (Dave Whittington <whitting@motispd.com>).
+  - Removed some duplicated files in src/scene
+  - Updated the FAQ.
+  - New CODING, PORTED and 3DFX information files [don't dream, 3Dfx cards
+    apparently don't have enough OpenGL features to run Moonlight:(]
+  - Development is now made with glibc and libpthread. (was: libc5 and
+    libpthreads)
+  - Fixed a fp bug under FreeBSD.
+
+0.4.2   March 11 1998
+  - Some fixes for Debian and RedHat build.
+  - Solaris port by Clint Moore <cmoore@shn.net>
+  - changed name & class hints (Marcelo E. Magallon <mmagallo@efis.ucr.ac.cr>)
+  - Moonlight starts up on a specific module, depending on the base
+     filename. See src/main/ml.C. (shortcut for kbuilder, etc.)
+  - added True Type Fonts handling. (Plain Text primitive)
+  - True Type Font selection dialog.
+  - !Warning! ~/.mlrc has been renamed into ~/.moonlightrc
+  - changed the resource file format. It looks like an std .ini file now.
+    (see RESOURCE_FILE)
+  - HPCR device port by Jacques LEROY <jle@star.be>. He recommends use
+    of gamma 2.5 on this device.
+  - updated "make install". it properly installs the binary, the
+    moonlightrc file and creates a default database.
+  - added some information files.
+  - Quake II MD2 format importer/exporter by Adam Mayer <phooky@gyral.com>
+  - and just for fun: the GPL license scrolling text at the beginning:-)
+
+0.4.1   March 3 1998
+    NURBS, yes, NURBS. (Just NURBS it!)
+    Changed default specular factor from 0.6 to 0.4.
+    autoconf/automake configuring interface.
+    Added the GPL header at the top of each file.
+    First GPL'ed release on www.cybersociety.com/moonlight
+
+0.4.0   January 6 1998
+    Default light type: global/direct. Default lights are now only direct
+    lights.
+    Default OpenGL directional light if there is no light in the scene.
+    Instantiation: you can duplicate objects that share their geometry. Only
+    their transformation/material/lighting are local.
+    Radiosity lighting doesn't "blink" no more when moving an object.
+    Added modelling components: OBJ (object), POL (polygon), VTX (vertex)
+    Pressing 'Space' makes ML switch to OBJ modelling component.
+    Tag Key ('t') for vertices. Switch to VTX component.
+    Vertices transformations.
+    Tag Polygon by ray-casting ('g'). Switch to POL component.
+    Polygons transformations.
+    Meshing parameters edition (u and v subdivision).
+    "Edit" popup.
+    Polygonize/Unpolygonize formal primitives.
+    MLRAW export format. Sample reader.
+    New packaged file format (*.mlk): includes geometries, hierarchies,
+    materials, scene, project in one single file.
+    Modes List Dialog.
+    Primitives List Dialog. Hierarchical list widget.
+    New 'a' key for material edition.
+    Fixed a serious bug in material creation/edition.
+    Multi Module Support: Tmpl, Photo, KBuilder.
+    About 150K lines.
+
+0.3.1   October 23 1997
+    A pool can now be deleted.
+    Fixed small bug when saving just after rendering.
+    Fixed a bug in geometry filenames (version information).
+    Global lighting update when material parameters change.
+    Null object support.
+    Middle button shortcut for left popups.
+    Fix a bug in the exporters (thanks to teddy@frankfurt.netsurf.de !)
+    Internal changes for better modelling support in the future.
+
+0.3.0   September 28 1997
+    Welcome image + license button
+    Disable widgets in Light/Pool dialogs when no selection.
+    Images readers and writers.
+    Official name changed to "Moonlight Creator".
+    Exporters: OFF, DXF, VRML1, VRML2, POV, RAY.
+    Tested with Mesa-2.4beta2 and 3.
+    Materials. (not yet textured) Material Dialog Edition.
+    Material file format.
+    Lights: full implementation (point, spot, directional)
+    Materials: global lighting contributor or not.
+    Lights: generate global lighting or not.
+    For direct lights: integrated in the preview mode. Specular.
+    Updated the radiosity process for transmission.
+    Full raytracing implementation (reflections + transmissions). OpenGL
+    compliant. Can refine global light shadows.
+    When moving a light or a object: shadow update detection.
+    Free rotation of objects.
+    Object auto-orientation by raycasting a 3D point ("C" mode)
+    Tested with Mesa-2.4.
+    Full rendering mode. Renderer options.
+    Revision: menus bars. Main Camera binding.
+    Select all lights.
+    View Axes option.
+    131K lines
+
+0.2.5   August 9 1997
+    Scale/Rotate lighting update.
+    Show axes option.
+    Work on Status Line. Look.
+    Port on Windows 95/NT with cygwin32 tools and Microsoft OpenGL 1.1.
+     [!to be tested!]
+    Global gamma correction included. (standard gamma is 1.7)
+    Alt-F9 hard-coded in case the window manager doesn't know this hot-key.
+    Transform dialog box update.
+    Mouse Cursors.
+    Render time function.
+    Fix the "Clear All" bug.
+    Wrote Mode/Functions classes. Message/info status lines.
+    Transform "apply" & "reset" buttons work.
+    Single/Multiple speed-up switch. Blinking spheres.
+    Converters are now run in command line from ml executable.
+    Radiosity information dialog box. (careful: slow down radiosity
+    computation)
+    Scene information dialog box.
+    Welcome dialog & intro text for dummies.
+    Corrected lights geometry (empty geometry)
+    Fixed form factors from point lights bug. Light have now a default
+    intensity of 100.
+    Found a Mesa-2.3 bug in glXSwapBuffers().
+    Tested with Mesa-2.4beta1.
+    111403 lines.
+
+0.2.1   June 20 1997
+    Found a Mesa 2.3 tricky bug (memory allocation).
+    Small fixes.
+
+0.2.0   May 10 1997
+    Mmmh:-) (no changes recorded)
+
+0.1.0   March 26 1997
+    LightEdit dialog.
+    LightPool Manager dialog.
+    LightingProcess: full rewrite.
+    Updates when lights/objects move. No indirect yet.
+    Small Materials.
+    Full Undo/Redo
+    Initial Logo. Official name: "Moon Light Creator"
+
+0.0.2   March 2 1997
+    Polyhedra. More dialogs. Accelerated raytracing.
+    Mesa 2.2.
+
+0.0.1   February 20 1997
+    Modules/Canvas/Engines/Buttons/Dialogs support.
+    Simple formal Objects, hierarchy, dirty transformations.
+    Duplicate, Delete objects.
+    Tesselation. Raytracing. Wire/Shaded OpenGL rendering.
+    Simple point lights. Multi-threaded (pthreads) lighting.
+    First Internet Release on home.worldnet.fr/~rehel/ml/ml.html
+
+February 18 1997
+    POSIX threads support for interactive lighting refreshing.
+    Mesa-2.2beta6
+
+October 28 1996
+    Mesa-2.0 port. Ough!
+
+0.0.0   June 27 1996 to August 26 1996
+    Initial development under Mesa-1.2.8
+    Very first code of the project.
+    OpenGL-based Graphics classes.
+    System & Soft windows.
+    Koala code.
+    KBuilder tool for making dialogs.
+    Total: 48102 lines.

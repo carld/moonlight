@@ -1,0 +1,302 @@
+Sunny Architecture Specifications for Moonlight
+-----------------------------------------------
+
+  -- Extensibility
+
+The project: nodes, properties, operators and procedures
+--------------------------------------------------------
+
+A project is seen as a tree of nodes. There is a minimal kernel, and the
+rest is plug-ins. Of course a plug-in can assume another plug-in is
+loaded or even request it for loading. (a kind of plug-in dependencies list)
+
+Each node publish a set of properties. These properties are identified
+by an integer or a string.
+Each node instance is identified by an integer (dynamically allocated).
+Each property is typed.
+Available types could be:
+  - boolean
+  - integer
+  - float (A)
+  - 3D vector (A)
+  - color RGBA (A)
+  - string
+  - array of integers, reals, colors, points, vectors, ...
+  - reference to another node
+
+Properties marked with "(A)" can be animated by a MLPropAnimator.
+
+You can assign a set of "Listeners" to each property: each time a
+property value changes, these associated listeners will be called.
+
+Operators: these nodes can update properties from other nodes or events.
+Do you know AVS? AVS defines a network of "filters" that transform
+input data to output data. This is the same idea but for properties.
+Operators can be:
+  - a CSG operator that can two shape instances and generate another shape
+  - an extrusion that generate a NURBS shape from a NURBS curve and a path
+  - a blob that generate a shape from a set of points and segments
+  - a constraint that forces an object to follow path for instance
+  - a expression that generates a color from another parameter
+  - a listener on an node property that does something when a change occurs.
+    It is different from standard listeners since std listeners are called
+    immediatly after each change. Listeners based on operators is called
+    only during the "Update" time of operators.
+  - ...
+Time could be seen as an operator: it updates animated properties from
+the time info (which could be seen as a node property). But all the animated
+properties should be linked to this operator. Elegant but slow.
+It will be implemented as a MLNode (and MLProperty) method call.
+
+Special nodes are procedures: the procedure name is the node name,
+and the (named) arguments are stored into properties.
+If a plugin creates new procedures, it specifies a callback function
+that handles with procedure.
+
+Java feeling: i have tried to implement some base features of Java JDK
+in this new architecture: MLString, MLHashTable, MLSerializable, etc.
+A node is serializable through a FILE*. Yes, it smells like beans:)
+
+As you see, the project is a set of nodes connected by operators. Many
+nodes and operators types follow.
+
+A plug-in can add some properties to existing nodes. It can generate other
+nodes too. It can create its own operators/listeners/procedures.
+
+Some examples of node interfaces:
+
+  MLPoint
+    - position
+
+  MLSegment
+    - position1
+    - position2
+
+  MLCurve
+    - closed
+    - vertices
+
+  MLNURBSCurve
+    - knots
+    - control points
+
+  MLShapeInstance
+    - reference to an existing shape
+    - transformation
+    - reference to an existing material
+
+This new architecture allows Moonlight to support many types of objects,
+materials, renderers. A user can create a scene using SART materials and
+use only the SART renderer for instance.
+
+Note that the *whole* project is visible, as well as its interface: canvas
+and engines. This means that a plug-in can create its own type of
+preview. Open your mind: a plug-in can do audio sampling or music, and
+synchronize any of its parameters with a MLFunction. The reverse case
+could be interesting too...
+
+This way could also allow us to have multiple interfaces for Moonlight.
+An interface plug-in should give a way to add menu items connected
+to a plug-in command. It could also allow a key to be bound to a
+MLModeFunction.
+
+I don't know yet if an interface architecture should specified. There
+are two possiblities:
+  + either any developer can write the interface the way he likes
+  + either Moonlight tells the developer to have Menus here, Canvas/Engines
+    there, etc. The developer then implements its own menu callbacks and
+    canvas/engines renderers.
+Well, the first solution should be easier to implement, but less flexible:
+this means that every interface has to be modified when a new feature is
+added.
+
+We can think that plug-in could be separate process. No decision has been
+made for now. I would greatly appreciate to write Java code...!
+An amazing thing: if one day plug-ins could be written in Java, we could
+save some plug-ins *into* the project, so that another user can load the
+project *and* the Java plug-ins !! Piece 'o cake.
+
+Plug-ins
+--------
+
+For each module+data, there is MLAppRoot node. It is the root node
+in which a module stores the current loaded document data.
+
+For implementing a new feature: we code the feature itself as plugin,
+and then code the interface part into another plugin. We can code two
+interface wrappers if we want. This type of plugin is requested by the
+interface: the interface loads the correct interface plugin, that will
+tell the kernel to load the implementation too.
+
+Plugin types:
+  + feature plugin: does not require any data stored, it only
+    implements a feature in a function. It is requested, it runs
+    and then exits. For example: an exporter.
+  + component plugin: this type of plugin must be understood as a permanent
+    plugin. It creates some procedures and run them when there are called.
+    The interface plugin can be seen as a component plugin.
+    For example: a tcl plugin creates a Tcl_Interp and wait for some
+    commands to be executed into.
+  + interface plugin: it implements the interface side of a feature plugin.
+    One feature plugin can be requested by different interface plugins.
+  + module plugin: this plugin creates a new module, i.e. a new MLAppRoot.
+
+Nodes Hierarchy for Moonlight-3D
+--------------------------------
+
+  Root
+    Scene (MLAppRoot)
+      Hierarchy
+        ...
+      Objects
+        Points
+        Segments
+        Curves
+        Shapes
+        ParticulesSystems
+        Lights
+        Cameras
+      Operators
+      Materials
+        MLRMaterials
+        POVMaterials
+      SART
+        Materials
+        Shaders
+        Objects
+      POV
+        Materials
+      Textures
+      Textures 3D
+      Gradients
+      Shaders
+      Renderers
+      Functions
+      Preferences
+      Plug-ins
+      Module
+        Canvas
+          Engines
+            prop: Cameras
+            prop: View
+
+        Dialogs
+
+Classes Hierarchy for Moonlight-3D
+----------------------------------
+
+  Remember that these classes store the application data into the
+  nodes. These classes inherit MLNode. MLScene inherits MLAppRoot.
+
+  MLAppRoot
+  MLProcedure
+  MLProcProfile
+    {
+    *name (string)
+    *proc_body (node ref to an MLProcedure)
+    }
+  MLProcArgs
+
+
+
+  MLObject
+    MLNullObject
+      {}
+    MLPoint
+      {
+      p (point)
+      }
+    MLSegment
+      {
+      p1 (point)
+      p2 (point)
+      }
+    MLCurve
+      {
+      vertices (point-array)
+      }
+      MLParametricCurve
+      MLNURBSCurve
+      MLDataCurve (a list of vertices)
+    MLShape
+      {
+      mesh (node struct to MeshRep)
+      type (integer)
+      }
+
+      MLUVShape
+        {
+        min_u (real)
+        max_u (real)
+        u_min_faces (integer)
+        u_faces (integer)
+        min_v (real)
+        max_v (real)
+        v_min_faces (integer)
+        v_faces (integer)
+        + shape specific properties
+        }
+      MLDataShape (a list of polygons)
+    MLParticulesSystem
+    MLLight
+    MLCamera
+      MLPerspectiveCamera
+      MLOrthoCamera
+  MLObjectInstance
+    {
+    object (noderef to MLObject)
+    xform (real-array's, srt, etc.)
+    }
+    MLShapeInstance
+      {
+      material (noderef to MLMaterial)
+      }
+  MLSceneOperator
+    MLGroup
+    MLFFD
+    MLCSG
+    MLExtrusion
+    MLRevolution
+    MLBlob
+    MLFlock
+    MLConstraint (path, orientation, etc.)
+  MLMaterial
+    MLRMaterial
+    MLPOVMaterial
+    MLSARTMaterial
+  MLTexture
+  MLTexture3D
+  MLGradient
+  MLFunction (time -> value)
+  MLPropAnimator (a set of functions)
+  MLSequence
+  MLRenderer
+    MLPOVRenderer
+    MLSARTRenderer
+  MLShader
+    MLRShader
+    MLSARTShader
+  MLScene
+    {
+    }
+  MLPreferences
+    {
+    }
+  MLModule
+  MLCanvas
+  MLEngine
+
+Ok, and so what?
+----------------
+
+Moonlight will keep on growing with its portable OpenGL-based user interface
+(unix/windows). But anyone could be able to start coding a GTK+/FreeQT GUI
+if he likes to.
+I can learn GTK myself but i have so little time for coding. And the default
+OpenGL-based interface is highly portable. Maybe someday, we could think of
+coding a General gRAphics & Sound Program (GRASP), that could integrate
+GIMP, Moonlight, a sound application, and a video application in a single
+creative environment (just a dream...:))
+
+Stephane Rehel, March/April 1998.
+Last modified: May 3 1998.

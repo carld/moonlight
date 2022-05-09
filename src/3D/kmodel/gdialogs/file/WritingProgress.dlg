@@ -1,0 +1,215 @@
+DialogPosition 1
+200 50
+DialogSize 1
+284 63
+nWidgets 1
+3
+DialogTitle 1
+Writing
+DialogFrame 1
+1
+DialogKillIcon 1
+0
+Name 1
+WritingProgressDlg
+C_filename 1
+WritingProgressDlg.C
+h_filename 1
+WritingProgressDlg.h
+has_C_filename 1
+0
+has_h_filename 1
+0
+write_C_file 1
+1
+ValidateCancel 1
+0
+ValidateID 1
+0
+CancelID 1
+0
+DefaultGranularity 1
+4
+Granularity 1
+1
+Margins 4
+8
+8
+8
+8
+CardsRectangle 2
+1 1
+276 55
+EndHeader 0
+
+Type 1
+1
+Position 1
+76 8
+Size 1
+197 16
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+.
+ID 1
+1
+LinkID 1
+0
+CardID 1
+0
+Name 1
+label
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+26
+Position 1
+76 34
+Size 1
+200 21
+MinSize 1
+30 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+
+ID 1
+2
+LinkID 1
+0
+CardID 1
+0
+Name 1
+progress
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+27
+Position 1
+8 8
+Size 1
+56 46
+MinSize 1
+56 46
+MaxSize 1
+56 46
+Sizeable 1
+0 0
+Message 1
+
+ID 1
+3
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_3
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+writing_icon.ppm
+EndWidget 0
+nGroups 0

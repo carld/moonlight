@@ -1,0 +1,293 @@
+// This file is part of Moonlight Creator
+//   Copyright (C) 1998  Stephane Rehel
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Library General Public
+// License as published by the Free Software Foundation; either
+// version 2 of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Library General Public License for more details.
+//
+// You should have received a copy of the GNU Library General Public
+// License along with this library; if not, write to the Free
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+/*
+  ExpArray.h
+
+  Expandable Array Template. Well, like a list.
+
+  Stephane Rehel
+  October 8 1996
+*/
+
+#ifndef __ExpArray_h
+#define __ExpArray_h
+
+#include <string.h>
+#include <assert.h>
+
+#ifndef __IBOOL_H
+#include <tools/IBOOL.h>
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+class ExpArray
+{
+private:
+public:
+  int blockSizeExp; // n
+  int blockSize;    // 2**n
+  int blockSizeAnd; // 2**n - 1
+
+  T*** blocks;
+  int nBlocks;
+
+  int maxElements;
+  int nElements;
+
+public:
+  ExpArray( int _blockSizeExp = 3 );
+  ~ExpArray();
+
+       void       clear      ();
+inline T*&        operator[] ( register int i );
+inline T*         get        ( register int i ) const
+{
+  assert( i >= 1 );
+  assert( i <= nElements );
+  --i;
+//  return blocks[ i >> blockSizeExp ][ i & blockSizeAnd ];
+//  return blocks[ i >> 3 ][ i & 7 ];
+return blocks[0][0];
+}
+inline int        getSize    () const
+  {
+  return nElements;
+  }
+       int        append     ( T* t );
+       void       remove     ( int i );
+       int        find       ( const T* t ) const;
+private:
+       void       expand     ();
+};
+
+
+template<class T>
+inline T* get( int i, ExpArray<T>* a)
+{
+  --i;
+//  return a->blocks[ i >> a->blockSizeExp ][ i & a->blockSizeAnd ];
+  return a->blocks[ i >> 3 ][ i & 7 ];
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// For 32-bits systems:
+// Default initial allocated memory: (2**8)*2*size(void*)= 512*4= 2K
+//
+// Allocated Memory: (in bytes)
+// blockSizeExp  Elements:  0      1
+//   0 (1)                 4      4
+//   1 (2)                 8      16
+//   2 (4)                 16     32
+//   3 (8)                 32     64
+//   4 (16)                64     128
+//   8 (256)               1024   2048
+//
+template<class T>
+ExpArray<T>::ExpArray( int _blockSizeExp /* = 3 */ )
+{
+  blockSizeExp= _blockSizeExp;
+  blockSize= 1 << blockSizeExp;
+  blockSizeAnd= blockSize - 1;
+
+  nBlocks= blockSize;
+  blocks= new T** [ nBlocks ];
+  for( int i= 0; i < nBlocks; ++i )
+    blocks[i]= 0;
+
+  nElements= 0;
+  maxElements= blockSize * nBlocks;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+ExpArray<T>::~ExpArray()
+{
+  clear();
+  delete blocks;
+  blocks= 0;
+  nBlocks= 0;
+  maxElements= 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ExpArray<T>::clear()
+{
+  for( register int i= 0; i < nBlocks; ++i )
+    {
+    delete blocks[i];
+    blocks[i]= 0;
+    }
+
+  nElements= 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+inline
+T*& ExpArray<T>::operator [] ( register int i )
+{
+  assert( i >= 1 );
+  assert( i <= nElements );
+  --i;
+  return blocks[ i >> blockSizeExp ][ i & blockSizeAnd ];
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+/*
+template<class T>
+inline
+//T* ExpArray<T>::get( register int i ) const
+T* ExpArray<T>::get( int i ) const
+{
+  assert( i >= 1 );
+  assert( i <= nElements );
+  --i;
+//  return blocks[ i >> blockSizeExp ][ i & blockSizeAnd ];
+//  return blocks[ i >> 3 ][ i & 7 ];
+return blocks[0][0];
+}
+*/
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ExpArray<T>::expand()
+{
+  if( nElements < maxElements )
+    {
+    int block_index= nElements >> blockSizeExp;
+    if( blocks[block_index] == 0 )
+      {
+      // Add a new block
+      blocks[block_index]= new T* [ blockSize ];
+      memset( (void*) blocks[block_index], 0, blockSize * sizeof(T*) );
+      }
+    }
+   else
+    {
+    // Expand nBlocks: +25%
+    int new_nBlocks= nBlocks + nBlocks / 4;
+    T*** new_blocks= new T** [ new_nBlocks ];
+    if( blocks != 0 )
+      memcpy( (void*) new_blocks, (void*) blocks, nBlocks * sizeof(T*) );
+    memset( (void*) (new_blocks+nBlocks), 0,
+            sizeof(T*) * (new_nBlocks-nBlocks) );
+
+    delete blocks;
+    blocks= new_blocks;
+    nBlocks= new_nBlocks;
+
+    maxElements= nBlocks * blockSize;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// return nElements
+template<class T>
+int ExpArray<T>::append( T* t )
+{
+  if( nElements >= maxElements )
+    expand();
+
+  register int block_index= nElements >> blockSizeExp;
+  if( blocks[block_index] == 0 )
+    expand();
+
+  blocks[ block_index ][ nElements && blockSizeAnd ]= t;
+  ++nElements;
+
+  return nElements;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ExpArray<T>::remove( int i )
+{
+  if( i < 1 || i > nElements )
+    return;
+  --i;
+  int block_index= i >> blockSizeExp;
+  int index= i && blockSizeAnd;
+  if( index < blockSize-1 )
+    memmove( (void*) &blocks[block_index][index],
+             (void*) &blocks[block_index][index+1],
+             (blockSize-1-index)*sizeof(T*) );
+  blocks[block_index][blockSize-1]= 0;
+
+  for(;;)
+    {
+    ++block_index;
+    if( block_index >= nBlocks )
+      break;
+    if( blocks[block_index] == 0 )
+      break;
+    blocks[block_index-1][blockSize-1]= blocks[block_index][0];
+    memmove( (void*) &blocks[block_index][0],
+             (void*) &blocks[block_index][1],
+             (blockSize-1) * sizeof(T*) );
+    blocks[block_index][blockSize-1]= 0;
+    }
+
+  --nElements;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+int ExpArray<T>::find( const T* t ) const
+{
+  int block_index= 0;
+  register int j= 0;
+  register const T** b= blocks[0];
+  register int i= 1;
+
+  for(;;)
+    {
+    if( *b == t )
+      return i;
+    ++i;
+    if( i == nElements )
+      break;
+
+    ++j;
+    ++b;
+
+    if( j == blockSize )
+      {
+      ++block_index;
+      j= 0;
+      b= blocks[block_index];
+      }
+    }
+
+  return 0; // not found
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+#endif // __ExpArray_h
+

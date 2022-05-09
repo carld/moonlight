@@ -1,0 +1,350 @@
+DialogPosition 1
+200 50
+DialogSize 1
+200 268
+nWidgets 1
+6
+DialogTitle 1
+Dialog #1
+DialogFrame 1
+1
+DialogKillIcon 1
+0
+Name 1
+Dialog1Dlg
+C_filename 1
+Dialog1Dlg.C
+h_filename 1
+Dialog1Dlg.h
+has_C_filename 1
+0
+has_h_filename 1
+0
+write_C_file 1
+1
+ValidateCancel 1
+1
+ValidateID 1
+0
+CancelID 1
+0
+DefaultGranularity 1
+4
+Granularity 1
+4
+Margins 4
+8
+8
+8
+8
+CardsRectangle 2
+5 1
+184 241
+EndHeader 0
+
+Type 1
+21
+Position 1
+28 8
+Size 1
+100 100
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Group
+ID 1
+1
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_1
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+44 40
+Size 1
+49 24
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&Button
+ID 1
+2
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_2
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+8
+Position 1
+8 120
+Size 1
+144 101
+MinSize 1
+50 50
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+
+ID 1
+3
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_3
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+6
+Position 1
+172 24
+Size 1
+16 193
+MinSize 1
+16 50
+MaxSize 1
+16 0
+Sizeable 1
+0 1
+Message 1
+
+ID 1
+4
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_4
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+10
+Position 1
+44 76
+Size 1
+75 16
+MinSize 1
+20 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+&CheckBox
+ID 1
+5
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_5
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+12 236
+Size 1
+169 24
+MinSize 1
+10 10
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+Press me immediatly please
+ID 1
+6
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_6
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+nGroups 0

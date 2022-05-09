@@ -1,0 +1,248 @@
+DialogPosition 1
+200 30
+DialogSize 1
+213 96
+nWidgets 1
+4
+DialogTitle 1
+Save as
+DialogFrame 1
+1
+DialogKillIcon 1
+1
+Name 1
+SaveAsDlg
+C_filename 1
+SaveAsDlg.C
+h_filename 1
+SaveAsDlg.h
+has_C_filename 1
+0
+has_h_filename 1
+0
+write_C_file 1
+1
+ValidateCancel 1
+1
+ValidateID 1
+3
+CancelID 1
+4
+DefaultGranularity 1
+4
+Granularity 1
+4
+Margins 4
+8
+8
+8
+8
+CardsRectangle 2
+5 5
+200 180
+EndHeader 0
+
+Type 1
+1
+Position 1
+8 8
+Size 1
+50 18
+MinSize 1
+50 18
+MaxSize 1
+50 18
+Sizeable 1
+0 0
+Message 1
+&Save as
+ID 1
+1
+LinkID 1
+0
+CardID 1
+0
+Name 1
+Widget_1
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+11
+Position 1
+8 32
+Size 1
+197 21
+MinSize 1
+20 21
+MaxSize 1
+400 21
+Sizeable 1
+1 0
+Message 1
+ID 1
+ID 1
+2
+LinkID 1
+1
+CardID 1
+0
+Name 1
+edit
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+1
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+136 64
+Size 1
+67 24
+MinSize 1
+10 10
+MaxSize 1
+400 300
+Sizeable 1
+1 1
+Message 1
+&OK
+ID 1
+3
+LinkID 1
+0
+CardID 1
+0
+Name 1
+ok
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+1
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+1
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+
+Type 1
+3
+Position 1
+60 64
+Size 1
+67 24
+MinSize 1
+10 10
+MaxSize 1
+400 300
+Sizeable 1
+1 1
+Message 1
+&Cancel
+ID 1
+4
+LinkID 1
+0
+CardID 1
+0
+Name 1
+cancel
+List 0
+Margin 1
+0
+Justify 1
+1
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+0
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+PictureFilename 1
+
+EndWidget 0
+nGroups 0

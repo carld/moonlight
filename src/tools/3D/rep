@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for i in $*
+  do
+  echo $i
+  cat $i | sed s/MLArray/MLDArray/g \
+         > /tmp/aaa
+  touch -r $i /tmp/aaa
+  mv /tmp/aaa $i
+  done
+
+

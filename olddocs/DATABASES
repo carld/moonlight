@@ -1,0 +1,23 @@
+Database information for Moonlight 3D
+-------------------------------------
+
+Moonlight stores its files in directories called "databases".
+A database is a directory entry that contains a ML database hierarchy
+(geometries, scenes, materials, etc.)
+
+If you want to save your scenes you need at least one database to save
+them into.
+
+You can download a sample existing scene or using the default
+database of the distribution.
+
+If you want to create a new one (say, in /usr/local/database)
+
+  cd /usr/local
+  mkdir database
+  cd database
+  mkdir GEOMETRIES HIERARCHIES IMAGES MATERIALS PROJECTS SCENES
+
+Then you have to maintain the databases list in your Resource File.
+See RESOURCE_FILE.
+

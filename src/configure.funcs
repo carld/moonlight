@@ -1,0 +1,132 @@
+SRCDIR=`dirname $0`
+OBJDIR=`pwd`
+cd $SRCDIR
+SRCDIR=`pwd`
+OPTIONS="$*"
+
+LOGFILE=$OBJDIR/config.log
+
+rm -f $LOGFILE
+
+header(){
+# header "app title"
+if [ "x$HELPMODE" = xyes ]; then
+  echo "configure script for $1"
+  echo "there exist several options you may want to change:"
+  echo
+fi
+}
+
+checktype(){
+# checktype type "systemheaders" equivalent_primitive
+if [ "x$HELPMODE" = xyes ]; then return; fi
+echo -n "checking for $1... "
+RETURN="typedef $3 $1;"
+RETURNTEST=$RETURN
+TMP=/tmp/$$
+for i in $2; do
+cat >$TMP.c <<EOF
+#include <$i>
+$1 test;
+EOF
+echo $CC -c $TMP.c -o $TMP.o >>$LOGFILE 
+$CC -c $TMP.c -o $TMP.o 2>>$LOGFILE && RETURN="#include <$i> /* for $1 */" && rm -f $TMP.c $TMP.o && echo in $i && return
+echo using $3 as replacement.
+rm -f $TMP.c $TMP.o
+done
+}
+
+checkpath(){
+# checkpath optionname defaultpath
+if [ "x$HELPMODE" = xyes ]; then
+  echo -e "  --$1=path\r\t\t\t\t[default: $2]"
+  return
+fi
+
+checkoption $1 $2
+}
+
+checkoption(){
+# checkoption optionname defaultvalue "othervalues"
+OTHERVALS=""
+if [ "x$3" != x ]; then
+  OTHERVALS="; options: $3"
+fi
+
+if [ "x$HELPMODE" = xyes ]; then
+  echo -e "  --$1=value\r\t\t\t\t[default: $2$OTHERVALS]"
+  return
+fi
+
+RETURN="no"
+TMP="$OPTIONS"
+if [ "x$2" != x ]; then
+  TMP="$TMP --$1=$2"
+fi
+for i in $TMP; do
+  if [ "--$1" = `echo $i | cut -d'=' -f1` ]; then
+    RETURN=`echo $i | cut -d'=' -f2-`
+    if [ "x$RETURN" = "x--$1" ]; then
+      RETURN=yes
+    fi
+    return
+  fi
+done
+}
+
+checkapp(){
+# checkapp "names in order of preference"
+if [ "x$HELPMODE" = xyes ]; then return; fi
+for i in $1; do
+  echo -n "checking for $i... "
+  if [ "x`whereis $i | cut -d':' -f2`" != x ]; then
+    echo ok.
+    RETURN=$i
+    return
+  fi
+  echo no
+done
+}
+
+checklib(){
+# checklib "library (eg. z or stdc++)" "headerfile" "function to test for" "defaultlibpath" "defaultincludepath" "extralibs, eg. -lz -lGL"
+# doesn't check for presence of the header file yet
+INCPATH=""
+LIBPATH=""
+checkpath "with-$1-libs" "$4"
+if [ "x$RETURN" != xno ]; then
+  LIBPATH=-L$RETURN
+fi
+checkpath "with-$1-include" "$5"
+if [ "x$RETURN" != xno ]; then
+  INCPATH=-I$RETURN
+fi
+
+if [ "x$HELPMODE" = xyes ]; then return; fi
+echo -n "checking for library lib$1... "
+
+TMP=/tmp/$$
+cat >$TMP.c << EOF
+#include "$2"
+int main(){
+  $3;
+}
+EOF
+echo $CC -o $TMP $TMP.c -l$1 $LIBPATH $INCPATH $6 >>$LOGFILE 
+$CC -o $TMP $TMP.c -l$1 $LIBPATH $INCPATH $6 2>>$LOGFILE && rm -f $TMP $TMP.c && echo "ok. libraries in $LIBPATH, headers in $INCPATH" &&return
+rm -f $TMP $TMP.c
+echo lib$1 couldn\'t be used to compile
+exit 1
+}
+
+producefiles(){
+# producefiles list of files that shoule be patched
+if [ "x$HELPMODE" = xyes ]; then return; fi
+for i in $*; do
+  echo writing $i...
+  patchfile "$SRCDIR/$i.in" "$OBJDIR/$i"
+done
+}
+
+checkoption help
+HELPMODE=$RETURN

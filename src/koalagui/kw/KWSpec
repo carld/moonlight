@@ -1,0 +1,35 @@
+Koala Widgets Spec
+
+Required:
+  Architecture:
+    + Kernel: widgets core, pointers
+    + Simple User API: simple callback functions, IDs
+
+  A widget is a window (with standard events) where we can draw;
+  State: available/non available
+  Possible runtime Fields:
+    + text (OString)
+    + position (int)
+    + value (double)
+    + text at position i (int,OString)
+
+KWEvent class:
+
+Type    : KWEvent::SELECT
+Send by : Button CheckBox RadioButton
+When    : User has successfully press the button
+Fields  : dialog, type, widget
+Answer  : any
+
+Type    : KWEvent::KEY
+Send by : all
+When    : User has successfully press a key
+Fields  : dialog, type, widget, key
+Answer  : IFALSE if this key should be processed
+          ITRUE if this key should be omitted
+
+Type    : KWEvent::DRAW
+Send by : Area
+When    : Area needs to be refreshed
+Fields  : dialog, type, widget
+Answer  : any

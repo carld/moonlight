@@ -1,0 +1,96 @@
+#!/bin/sh
+
+## This file is part of Moonlight Creator
+## Copyright (C) 1996-1998  Stephane Rehel
+##               2002       Patrick Mauritz
+##
+## This program is free software; you can redistribute it and/or
+## modify it under the terms of the GNU Library General Public
+## License as published by the Free Software Foundation; either
+## version 2 of the License, or (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+## Library General Public License for more details.
+##
+## You should have received a copy of the GNU Library General Public
+## License along with this library; if not, write to the Free
+## Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+#
+# THIS IS THE ONLY PLACE WHERE YOU CAN CHANGE moonlight VERSION
+#
+MAJOR=0
+MINOR=5
+PATCHLEVEL=5
+# 0.5.3 RELEASEDATE=19980611
+# 0.5.4 RELEASEDATE=20020330
+RELEASEDATE=20021016
+TODAY=`date +"%Y%m%d"`
+
+getdate(){
+local DATE
+local TMP
+local TMP2
+
+DATE=$1
+TMP=""
+TMP2=""
+
+YEAR=`echo $DATE | cut -c1-4`
+MONTH=`echo $DATE | cut -c5-6`
+DAY=`echo $DATE | cut -c7-8`
+
+TMP=`echo "($YEAR-2000)*365+($YEAR-2002)/4" | bc`
+
+if [ $MONTH = 12 ]; then TMP2=$TMP2+30; MONTH=11 ;fi
+if [ $MONTH = 11 ]; then TMP2=$TMP2+31; MONTH=10 ;fi
+if [ $MONTH = 10 ]; then TMP2=$TMP2+30; MONTH=09 ;fi
+if [ $MONTH = 09 ]; then TMP2=$TMP2+31; MONTH=08 ;fi
+if [ $MONTH = 08 ]; then TMP2=$TMP2+31; MONTH=07 ;fi
+if [ $MONTH = 07 ]; then TMP2=$TMP2+30; MONTH=06 ;fi
+if [ $MONTH = 06 ]; then TMP2=$TMP2+31; MONTH=05 ;fi
+if [ $MONTH = 05 ]; then TMP2=$TMP2+30; MONTH=04 ;fi
+if [ $MONTH = 04 ]; then TMP2=$TMP2+31; MONTH=03 ;fi
+if [ $MONTH = 03 ]; then TMP2=$TMP2+28; MONTH=02 ;fi
+if [ $MONTH = 02 ]; then TMP2=$TMP2+31; MONTH=01 ;fi
+
+RESULT=`echo $TMP$TMP2+$DAY | bc`
+}
+
+getdate $TODAY
+BUILDTMP1=$RESULT
+getdate $RELEASEDATE
+BUILDTMP2=$RESULT
+BUILD=`echo $BUILDTMP1-$BUILDTMP2 | bc`
+
+if test $# = 0 ; then
+  echo ${MAJOR}.${MINOR}.${PATCHLEVEL}.${BUILD}
+  exit 0
+fi
+
+usage="Usage: $0 [-M|--major] | [-m|--minor] [-p|--patchlevel] [-b|--build]"
+
+if test $# != 1 ; then
+  echo $usage 1>&2
+  exit 1
+fi
+
+case "$1" in
+  -M | --major)
+    echo $MAJOR
+    exit 0 ;;
+  -m | --minor)
+    echo $MINOR
+    exit 0 ;;
+  -p | --patchlevel)
+    echo $PATCHLEVEL
+    exit 0 ;;
+  -b | --build)
+    echo $BUILD
+    exit 0 ;;
+esac
+
+echo $usage 1>&2
+exit 1

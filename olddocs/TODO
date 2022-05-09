@@ -1,0 +1,41 @@
+Quick & dirty TODO list for Moonlight-3D
+
+First, Moonlight needs a tutorial. It could be available online and
+distributed in a tar.gz file too. Volunteers are needed!
+
+"Little" things
+---------------
++ port the dynamic library loading stuff to HPUX
+   (src/tools/MLDynamicLibrary.*)
++ antialising in the renderer
++ be able to save a snapshot of the display
++ export both in SART and Panorama formats
++ detach a polygon
++ remove a vertex
++ remove a polygon
++ material preview
++ convert all polygons into quads/triangles
++ reverse a primitive or a polygon
++ be able to zoom *all viewports* so that the current selection (or
+  entire scene) fits neatly inside the borders of each viewpoint.  This is
+  the same as AC3D's "View | Fit All" command.
+  (jeff.garzik@spinne.com)
++ * Textures and image maps :)
+  * Multiple cameras
+  (jeff.garzik@spinne.com)
++ boolean operations
++ base primitives parameters edition
++ create a parametric surface (or curve) from a simple equation (need to
+  parse an expression with flex/bison)
+
+Heavy stuff
+-----------
++ more NURBS surface
++ more NURBS curves
++ simple API access. scripting language (java or tcl).
++ generic curve edition engine
++ animation (needs the previous item and many many other things before)
++ extend the OOM (object oriented modelling) module for creating an
+  OMT view of the project
++ improve the raytracer: first pass by zbuffering
+

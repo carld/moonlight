@@ -1,0 +1,54 @@
+proc print_node_properties { node indent } \
+{
+  if { [$node nProperties] == 1 } \
+    {
+    # this node as no property expect its name
+    puts "$indent  {}"
+    return
+    }
+
+  puts "$indent  {"
+  foreach p [$node properties] \
+    {
+    set t [$p type]
+    set n [$p name]
+    if { $n == "*name" } \
+      continue
+
+    puts "$indent  ${n} (${t}) = [$p toString]"
+    }
+  puts "$indent  }"
+}
+
+proc _print_nodes { root indent } \
+{
+  foreach n [$root children] \
+    {
+    puts "${indent}[$n name]"
+
+    print_node_properties $n $indent
+    _print_nodes $n "$indent  "
+    }
+}
+
+proc print_all_nodes {} \
+{
+  _print_nodes ml_root ""
+}
+
+puts toto
+
+set my_child [ml_root newChild tcl-test-node]
+
+set p1 [$my_child newString string]
+$p1 setString "one string"
+
+[$my_child newBoolean one_bool] setBoolean true
+[$my_child newInteger one_int] setInteger 1234
+[$my_child newReal "a real number"] setReal [expr sin(1)]
+[$my_child newString "another strg"] setString "sky my husband"
+[$my_child newVector a_vector] setVector "0.1 0.1 2"
+[$my_child newColor a_red_color] setColor ".8 0 .1"
+
+print_all_nodes
+

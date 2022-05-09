@@ -1,0 +1,26 @@
+This is the root source dir of Moonlight.
+
+Subdirectories are:
+
+tools/        The tools library.
+image/        The image library.
+kernel/       The Sunny Architecture sources.
+
+koalagui/     The Koaka GUI implementation. Used by 3D/kmodel for instance.
+              This is a library.
+
+3D/           Moonlight-3D module: 3D kernel (scene) and interface (kmodel)
+
+kbuilder/     KBuilder for creating/editing Koala Dialogs.
+
+tcl/          The Tcl plug-in. (only depending on kernel/)
+
+photo/        A koalagui module for loading image. Currently does nothing
+              else.
+
+oom/          A koalagui module for designing OOM (Object Oriented Modeling)
+              graphs. Only the core structures of the OOM graph is
+              implemented. It is not even displayed.
+
+main/         The main directory, where the executable if done.
+

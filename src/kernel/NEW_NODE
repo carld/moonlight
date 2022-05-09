@@ -1,0 +1,68 @@
+/*
+  MyNode.h
+
+  creator
+  date
+*/
+
+#ifndef __MyNode_h
+#define __MyNode_h
+
+#include "kernel/MLNode.h"
+
+/////////////////////////////////////////////////////////////////////////////
+
+/*[NODE_PROFILE]
+  MyNode
+
+  Type: node_type
+  SuperType: node_super_type
+
+  --Properties--
+    "prop_name" (prop_type)
+    ...
+  --Children--
+    "child_name" (node_class)
+    ...
+*/
+
+/////////////////////////////////////////////////////////////////////////////
+
+class MyMnode: public MyNode
+{
+public:
+  MyNode(...): MLNode(...)
+    {}
+
+  virtual ~MyNode();
+
+  // requested
+  virtual MLPropertyType::Type getNodeType() const
+    {
+    return my_node_type; // must be registered in MLAppRoot::types
+    }
+
+  // optional
+  virtual boolean serialReadFinalize()
+    {
+    return true;
+    }
+
+  // optional (it depends if you have registered a right creator method
+  // in MLAppRoot::types and no additional member variables need to
+  // be initiliazed
+  virtual MLNode* clone() const
+    {
+    ...
+    }
+
+  // optional
+  virtual MLString toString() const
+    {
+    ...
+    }
+};
+
+/////////////////////////////////////////////////////////////////////////////
+
+#endif // ifndef __MyNode_h

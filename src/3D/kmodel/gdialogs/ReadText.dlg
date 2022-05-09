@@ -1,0 +1,101 @@
+DialogPosition 1
+200 50
+DialogSize 1
+585 378
+nWidgets 1
+1
+DialogTitle 1
+Read
+DialogFrame 1
+1
+DialogKillIcon 1
+1
+Name 1
+ReadTextDlg
+C_filename 1
+ReadTextDlg.C
+h_filename 1
+ReadTextDlg.h
+has_C_filename 1
+0
+has_h_filename 1
+0
+write_C_file 1
+1
+ValidateCancel 1
+1
+ValidateID 1
+0
+CancelID 1
+0
+DefaultGranularity 1
+4
+Granularity 1
+4
+Margins 4
+0
+0
+0
+0
+CardsRectangle 2
+0 -5
+100 80
+EndHeader 0
+
+Type 1
+8
+Position 1
+0 0
+Size 1
+585 378
+MinSize 1
+50 50
+MaxSize 1
+0 0
+Sizeable 1
+1 1
+Message 1
+
+ID 1
+1
+LinkID 1
+0
+CardID 1
+0
+Name 1
+text
+List 0
+Margin 1
+0
+Justify 1
+3
+Vertical 1
+1
+Scrolling 1
+1
+Available 1
+1
+FixedFont 1
+1
+BigFont 1
+0
+TextList 1
+1
+EnterPXM 1
+0
+MinValue 1
+0
+MaxValue 1
+1
+NDigits 1
+3
+MinValueBar 1
+0
+MaxValueBar 1
+1
+EditWidth 1
+30
+PictureFilename 1
+
+EndWidget 0
+nGroups 0

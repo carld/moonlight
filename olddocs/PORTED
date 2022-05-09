@@ -1,0 +1,6 @@
+03-06-98   0.4.1   Solaris (Clint Moore <cmoore@shn.net>)
+03-06-98   0.4.1   HP 712/60 running HPUX 9.03 (Jacques LEROY <jle@star.be>)
+03-13-98   0.4.2   Solaris 2.6/x86 (Kai Duebbert <kad@gmx.de>)
+03-30-98   0.4.2   FreeBSD-2.2.5 (Philippe Regnauld <regnauld@deepo.prosa.dk>)
+04-22-98   0.4.3   Linux/Alpha/glibc (Sadruddin Rejeb <rejeb@sdpdec9.epfl.ch>)
+05-08-98   0.4.2   linux-ppc (Scott Sams <sbsams@linuxppc.org>) without pthread

@@ -1,0 +1,286 @@
+FAQ for Moonlight Creator
+May 3 1998
+
+----------------------------------------------------------------------------
+What is Moonlight Creator?
+----------------------------------------------------------------------------
+
+  Moonlight Creator is a computer graphics application. It currently does
+  simple modelling and rendering. It supports global illumination
+  (radiosity) in background with the modelling operations.
+  This software runs under Linux (with Mesa) and Windows 95/NT
+  (with Microsoft OpenGL).
+  It is copyrighted Stephane Rehel (rehel@kluster.com).
+
+  OpenGL(R) is a registered trademark of Silicon Graphics, Inc.
+  Mesa is copyrighted Brian Paul.
+
+----------------------------------------------------------------------------
+Where is the official site of Moonlight Creator?
+----------------------------------------------------------------------------
+
+  The official site of Moonlight Creator is:
+
+    http://www.cybersociety.com/moonlight/
+
+----------------------------------------------------------------------------
+Is is free software?
+----------------------------------------------------------------------------
+
+  Moonlight is distributed under the terms of the GNU
+  General Public License, see the LICENSE file for details.
+
+----------------------------------------------------------------------------
+What is OpenGL? Mesa? Why do you use OpenGL?
+----------------------------------------------------------------------------
+
+  OpenGL is portable 2D/3D graphics library.
+  See http://www.opengl.org for further information.
+
+  Mesa is a library released under the GPL with an API which is very
+  similar to that of OpenGL.
+  You can get Mesa at: http://www.ssec.wisc.edu/~brianp/Mesa.html
+
+  OpenGL is highly portable. It is the most flexible choice for
+  3D rendering under X11 and Windows.
+
+----------------------------------------------------------------------------
+Where can i find a tutorial for Moonlight?
+----------------------------------------------------------------------------
+
+  There is no tutorial. Mmmh, any volunteers?:-)
+
+----------------------------------------------------------------------------
+What is radiosity?
+----------------------------------------------------------------------------
+
+  Radiosity is a global illumination algorithm which simulates both direct
+  and indirect lighting in a 3D environment.
+  It can render more realistic images than traditional ray-traced direct
+  lighting.
+  If you want to get additional information on global illumination
+  techniques, read "Radiosity and Global Illumination",
+  Francois X. Sillion and Claude Puech, Morgan Kaufmann Publishers Inc,
+  San Francisco, California.
+  On the Web:
+  http://w3imagis.imag.fr/Membres/Francois.Sillion/Papers/Index.html#SP94Tag
+
+----------------------------------------------------------------------------
+I don't exactly understand how it works... I can't select any object.
+Could you help me?
+----------------------------------------------------------------------------
+
+  Clicking on a 3D window does nothing. You have to tell Moonlight to use
+  a mode. A mode defines the type of action you want to do. Use the mouse
+  to perform the action. You enter a mode by pressing its associated
+  mode-key.
+
+  Example: The Select mode-key is Space. For selecting an object:
+    + press Space key,
+    + select the object with the mouse,
+    + release Space.
+
+  You may access a small dialog that shows you all the available modes.
+  It may help you at the beginning. Click on the "Modes List" button
+  from the first entering dialog.
+
+----------------------------------------------------------------------------
+I can't load any file. Moonlight tells me "*ERROR*".  What's wrong?
+----------------------------------------------------------------------------
+
+  Moonlight stores its files in directories called "databases".
+  A database is a directory entry that contains a ML database hierarchy
+  (geometries, scenes, materials, etc.)
+  The list of available databases for your account is stored in the
+  resource file.
+  See RESOURCE_FILE.
+  Note that the resource file format has changed since 0.4.2.
+
+----------------------------------------------------------------------------
+Is it possible to write new modules or plug-ins?
+----------------------------------------------------------------------------
+
+  The kernel of Moonlight is currently being rewritten. This new
+  architecture will allow:
+    + plug-ins in any language,
+    + multiple material type, multiple renderer to be used
+    + multiple kinds of GUI's.
+  Check out the SunnySpecs at the official site.
+
+----------------------------------------------------------------------------
+What does the POV exporter?
+----------------------------------------------------------------------------
+
+  The POV exporter only exports the geometry of your scene. (vertices,
+  normals and triangles). Camera and materials are not currently exported.
+  Radiosity lighting is discarded.
+
+----------------------------------------------------------------------------
+Is there a RIB exporter?
+----------------------------------------------------------------------------
+
+  Yes, since 0.4.3.
+  Thanks to Dave Whittington <whitting@motispd.com>
+
+----------------------------------------------------------------------------
+What does the POV exporter?
+----------------------------------------------------------------------------
+
+  The POV exporter only exports the geometry of your scene. (vertices,
+  normals and triangles). Camera and materials are not currently exported.
+  Radiosity lighting is discarded.
+
+----------------------------------------------------------------------------
+Can i use Moonlight to create and illuminate 3D scenes, and then use them
+in my program?
+----------------------------------------------------------------------------
+
+  Yes! Just use the MLRAW export format. This format exports for you
+  the geometry and the illumination of the scene. See the documentation
+  file located in docs/mlraw/MLRAW_FORMAT and the sample C++ reader.
+
+----------------------------------------------------------------------------
+I'm getting bored with databases. Is there another way to export
+my project in one single file?
+----------------------------------------------------------------------------
+
+  Yes! Just use the "Packaged" file format (extension .mlk).
+  Select File/Get/Packaged and File/Put/Packaged popup menus.
+  This format includes geometries, hierarchies, materials, scene,
+  project. This way, you can easily exchange scenes with your friends!
+
+----------------------------------------------------------------------------
+Moonlight crashes in a unexpected way under Windows. What's wrong?
+----------------------------------------------------------------------------
+
+  Moonlight is being developed under Linux and Mesa.
+  If you have problems running the Windows version, ask your graphics
+  card provider or your OS provider.
+  Moonlight has been successfully tested under Windows 95 with the
+  standard Microsoft OpenGL 1.1 library.
+
+----------------------------------------------------------------------------
+Moonlight even starts under Linux! i get the error message:
+XIO:  fatal IO error 0 (Unknown error) on X server ":0.0"
+      after 245 requests (244 known processed) with 0 events remaining.
+----------------------------------------------------------------------------
+
+  This X error is due to the multi-threaded code of Moonlight. I really
+  don't know how to fix it. I don't do concurrent calls to the X lib,
+  the are only done in the main thread!
+  FYI, I run XFree-3.3.1 with a Moonlight 0.5.0 binary built with
+  glibc-2.0.7pre3 and i never got this error... To be followed!
+
+----------------------------------------------------------------------------
+Does Moonlight support 3Dfx for rendering?
+----------------------------------------------------------------------------
+
+  Voodoo chipset does not support windowed rendering yet. Mesa has
+  an hack to do windowed rendering using 3Dfx hardware.
+  The driver must support: rendering in multiple window with a single
+  GL context, GL_BACK and GL_FRONT rendering, XPixmap/Bitmap rendering.
+
+  Jens Ch. Restemeier has tested Moonlight with 3Dfx, but it seems that
+  Voodoo chipset does not support enough OpenGL features for now.
+  Here's his report: (any help is welcome!)
+
+  > From - Wed Apr  8 22:59:48 1998
+  > Date: Sun, 29 Mar 1998 18:54:04 +0000
+  > From: "Jens Ch. Restemeier" <jchrr@post.uni-bielefeld.de>
+  > Subject: Moonlight tested with 3dfx
+  >
+  > I've got a 3dfx, currently, and I checked Moonlight and the GLTT demos
+  > with 3dfx. I used the "windowed" rendering, which uses the 3dfx for
+  > rendering and copies the result into an X-Window. I'm using Mesa 2.6
+  > with Linux.
+  >
+  > GLTT demos:
+  > demo: Crashes after the bitmapped font demos, alpha-blending demo didn't
+  > work
+  > logo: Works fine
+  >
+  > Moonlight:
+  > "windowed" mode: crahes after the introduction screen, paints the empty
+  > wire-frame view, but no menus or dialogs. upper area of the intro-screen
+  > is garbled.
+  > "fullscreen" mode: crahes after intro-screen.
+  >
+  > I think, that these are problems with the 3dfx. It's limited to a
+  > 640x480 screen, and it works independant from the normal gfx-card.
+  > (i.e.: You can connect one monitor to your normal card, and another to
+  > the 3dfx.)
+  > Mabye it's interesting to check a new VooDoo2, with more memory.
+
+----------------------------------------------------------------------------
+How did you create the sample scenes of the standard distribution?
+----------------------------------------------------------------------------
+
+  I have imported free objects. They have not been modelled with Moonlight!
+
+----------------------------------------------------------------------------
+How can i import 3D models?
+----------------------------------------------------------------------------
+
+  Try "moonlight -convert". You can import DXF, OFF and 3D-Studio ASC
+  formats.
+  For example, import the file "object.dxf":
+
+    moonlight -convert object.dxf -outname MyScene -db /moonlight/database
+
+  You should be able to get scene "MyScene" from the database
+  "/moonlight/database". (Select the File/Get/Scene popup menu)
+  Specifying the database location is optional. If you don't specify it,
+  the scene will be written in the first database found in ~/.mlrc
+
+----------------------------------------------------------------------------
+Do you plan to write plug-ins for interfacing the GIMP and Moonlight?
+Do you plan to integrate shaders into the Moonlight renderer?
+----------------------------------------------------------------------------
+
+  Why not!
+
+----------------------------------------------------------------------------
+Do you plan to write a GTK+ or FreeQT GUI for Moonlight?
+----------------------------------------------------------------------------
+
+  Why not! The new architecture that i am currently writing (see the
+  SunnySpecs) should allow this quite easily. I hope so.
+
+----------------------------------------------------------------------------
+How can i do texturing?
+----------------------------------------------------------------------------
+
+  It is not implemented yet.
+
+----------------------------------------------------------------------------
+I can't figure out how to use radiosity!
+----------------------------------------------------------------------------
+
+  Use the "DLT" and "ILT" buttons of the status bars.
+
+  1/ You can create "Direct" lights and "Global" lights. "Direct" lights
+     are standard OpenGL/ray-traced ligths. "Global" lights shoot radiosity
+     energy. Thus if you want to do radiosity, you have to create at least
+     one "global" light. Only lighting of "Global" lights will contribute
+     to the global illumination process.
+  2/ Same thing with materials: there are materials that contribute to the
+     radiosity process and others that are standard one.
+  3/ Then, the DLT button should be "ON". (DLT stands for "Direct LighTing")
+     For progressive iterations, press the "ILT" ("Indirect LighTing"). The
+     progressive algorithm should start up in background (in a separate
+     thread).
+
+  The good point is that you can separate your scene into a scene that is
+  globally lighted (using radiosity), and another that is directly lighted
+  by lights. Thus you can go on modelling on small objects without loosing
+  the global atmosphere of the radiosity-processed scene.
+
+  Note: you have to compile Moonlight with the pthread lib (native
+  threads are used under windows) if you want to do radiosity.
+
+  Note for pools: you can set lights into separate "light pools" and then
+  adjust the parameters of a set of lights very quickly. If you move a
+  light of a pool, direct _and_ indirect lighting of the other pools is not
+  destroyed!
+
+----------------------------------------------------------------------------

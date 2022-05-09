@@ -1,0 +1,27 @@
+VPATH=CONF_SRCDIR
+CXXFLAGS=-I$(VPATH) -I$(VPATH)/koalagui -I$(VPATH)/3D -I$(VPATH)/koalagui/graphics -I$(VPATH)/kbuilder/appcore -I. -D__X11__ -DML_USES_POSIX_THREADS CONF_COMPMODE CONF_JPEG_INC CONF_TIFF_INC CONF_GLTT_INC CONF_TTF_INC
+LDFLAGS=-Limage -Ltools -Lkernel -Lkoalagui -L3D/scene CONF_JPEG_LIB CONF_TIFF_LIB CONF_GLTT_LIB CONF_TTF_LIB
+CXX=CONF_CXX
+CC=CONF_CC
+prefix=CONF_PREFIX
+VERSION=CONF_VERSION
+INSTALLDATATARGET=installdata
+
+include $(VPATH)/dir.mak
+include $(VPATH)/rules.mak
+
+installdata:
+	@mkdir -p $(DESTDIR)$(prefix)/bin
+	@mkdir -p $(DESTDIR)$(prefix)/etc
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/GEOMETRIES
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/HIERARCHIES
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/IMAGES
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/MATERIALS
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/PROJECTS
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/SCENES
+	@mkdir -p $(DESTDIR)$(prefix)/share/moonlight/database/TT_FONTS
+	cp moonlightrc $(DESTDIR)$(prefix)/etc/
+	cp moonlight $(DESTDIR)$(prefix)/bin/
+	chmod +x $(DESTDIR)$(prefix)/bin/moonlight
+	cp $(VPATH)/../tt_fonts/*.txt $(VPATH)/../tt_fonts/*.ttf $(DESTDIR)$(prefix)/share/moonlight/database/TT_FONTS
+

@@ -1,0 +1,14 @@
+This is the interface part of Moonlight Creator.
+
+Subdirectories are:
+
+  graphics/        The base implementation for the windowing system, opengl
+                   initialization, event handling.
+
+  koala/           The widget library, based on OpenGL.
+
+  kw/              The high level widget API, used by dialog boxes.
+
+koalagui is a library linked into the main executable.
+
+/SR, March 31 1998 (the mozilla day!)

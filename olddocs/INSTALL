@@ -1,0 +1,56 @@
+INSTALLATION information for Moonlight Creator
+----------------------------------------------
+
+For compiling Moonlight Creator, you need:
+  + GNU make
+  + gcc 2.8.1 (*REQUIRED*, 2.7.2 won't work)
+
+and the following libraries:
+  + Mesa-2.6 or Mesa-3.0beta*
+  + freetype-1.0
+  + GLTT-2.1
+  + zlib-1.0.4 or 1.1.2
+  + jpeg-v6b
+  + tiff-3.4
+
+You also need a POSIX threads library (libpthread or libpthreads)
+if you want a full multi-threaded radiosity computation.
+
+FYI, Moonlight is currently developed with Mesa-3.0beta4,
+glibc-2.0.7pre3, binutils-2.9.1.0.6, gcc 2.8.1, Linux 2.1.104.
+
+Use the "configure" script to create your Makeconfig file.
+
+The "configure" script will try to find the libraries in top source dir,
+$HOME, /usr, /usr/local, and so on.
+Try "configure --help" for options.
+
+For compiling under Windows, run the "configure.cygnus" script.
+If you are under Linux, the script will use gnuwin32gcc, gnuwin32ar, etc.
+Under Windows, you'll need Cygnus-Win32 b18 or b19.
+
+The resulting binary will be in:
+
+  $topdir/bin/$target_os/opt/moonlight
+
+A link will be created:
+
+  $topdir/bin/moonlight -> $target_os/opt/moonlight
+
+Then run "make install". If your "prefix" directory is /usr/local (see
+the --prefix option for the configure script), this will create
+
+  /usr/local/bin/moonlight
+  /usr/local/lib/moonlight/<libs and plug-ins>
+  /usr/local/share/moonlight/database/
+  /usr/local/share/moonlight/database/GEOMETRIES/
+  /usr/local/share/moonlight/database/HIERARCHIES/
+  /usr/local/share/moonlight/database/IMAGES/
+  /usr/local/share/moonlight/database/MATERIALS/
+  /usr/local/share/moonlight/database/PROJECTS/
+  /usr/local/share/moonlight/database/SCENES/
+  /usr/local/share/moonlight/database/TT_FONTS/
+  /usr/local/etc/moonlightrc
+
+Edit the /usr/local/etc/moonlightrc or copy it into ~/.moonlightrc
+See RESOURCE_FILE.

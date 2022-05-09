@@ -1,0 +1,96 @@
+Resource File information for Moonlight Creator
+-----------------------------------------------
+
+!Warning! ~/.mlrc has been renamed into ~/.moonlightrc since 0.4.2
+
+Introduction
+============
+
+The resource file of Moonlight allows you to configure your environment.
+Moonlight needs one. When Moonlight starts, it tries to read the following
+resource files (in this order):
+
+  <install_prefix_dir>/etc/moonlightrc
+  ~/.moonlightrc
+  $MOONLIGHT_RC_FILE (set by "export MOONLIGHT_RC_FILE=...")
+  the file you optionaly specify by the -mlrc command line option
+
+The installation of Moonlight creates the
+<instal_prefix_dir>/etc/moonlightrc file and a default database
+in <install_prefix_dir>/share/moonlight/database
+
+Note that command line options will always override the parameters set
+into your resource file(s).
+
+Format
+======
+
+The resource file format for Moonlight has changed since version 0.4.2.
+You now have the following sections:
+  [Moonlight]    : dedicated to general environment configuration
+  [Moonlight 3D] : for the 3D module
+
+Each section has variables:
+
+  variable=value
+
+You can use environment variables:
+
+  variable=$HOME/graphics
+
+You can reuse variables with '%':
+
+  var1=foo
+  var2=%var1;bar
+
+Current types are:
+  bool : 0 (for false) or 1 (for true)
+  real : a real number
+  path : a path list. For example: /usr/moonlight:/home/user/ml:.
+         or ~/moonlight:~peter/ml/:/usr
+         You can use either ':' or ';' as path separator.
+         For Windows users: use slash "/" or backslash "\" as you want.
+         If you don't specify the drive, C: is used. Use Cygnus-Win32
+         convention for drives naming. (for example "//D/windows" refers
+         to "D:\windows")
+
+Line beginning with "#" are considered as comments.
+
+[Moonlight] Section
+===================
+
+ Name         Type    Meaning
+ ----         ----    -------
+ Fullscreen   bool    Run in fullscreen (1) or not (0)
+
+ Gamma        real    Set the gamma correction.
+                      Default is 1.
+                      If you Xserver or your video driver doesn'r support
+                      gamma correction, set it to 1.7
+                      For HPCR device set it to 2.5 (J.LEROY <jle@star.be>)
+
+[Moonlight 3D] section
+======================
+
+ Name         Type    Meaning
+ ----         ----    -------
+ Databases    path    The locations of your databases.
+                      Read DATABASES for details about databases.
+                      For example, if you have two databases, one in
+                      /usr/local/databases and another in /database :
+                        Databases=/usr/local/databases:/database
+
+ TTFontPath   path    The location of your True Type fonts repositories.
+
+
+Resource file sample
+====================
+
+[Moonlight]
+Fullscreen=1
+Gamma=1.7
+
+[Moonlight 3D]
+Databases=~/databases/default:/usr/local/lib/moonlight/database
+TTFontPath=/dos/win/fonts:~/databases/default/tt_fonts
+

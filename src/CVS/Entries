@@ -1,0 +1,23 @@
+/.cvsignore/1.1/Mon Jan 21 16:00:09 2002//
+/README/1.1/Mon Jan 21 11:26:39 2002//
+/SunnySpecs/1.1/Mon Jan 21 11:26:39 2002//
+D/3D////
+D/GL////
+D/image////
+D/kbuilder////
+D/kernel////
+D/koalagui////
+D/main////
+D/oom////
+D/tcl////
+D/tools////
+D/metaui////
+/dir.mak/1.1/Sun Aug 18 16:14:12 2002//
+/moonlightrc.in/1.2/Sat Aug 31 22:47:13 2002//
+/rules.mak/1.12/Sun Oct 13 14:45:52 2002//
+/config.h.in/1.3/Sun Oct 13 14:45:51 2002//
+/Makefile.in/1.6/Mon Oct 14 17:55:28 2002//
+/configure/1.8/Mon Oct 14 17:55:28 2002//
+/configure.funcs/1.9/Mon Oct 14 17:55:28 2002//
+/moonlight.run.sh.in/1.2/Tue Oct 15 04:56:33 2002//
+/get-version/1.8/Tue Oct 15 04:57:00 2002//
